@@ -23,17 +23,19 @@
                                   d="M10 20a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm1-5h1a3 3 0 0 0 0-6H7.99a1 1 0 0 1 0-2H14V5h-3V3H9v2H8a3 3 0 1 0 0 6h4a1 1 0 1 1 0 2H6v2h3v2h2v-2z" />
                         </svg>
                     </span>
+
                     Total Simpanan
                 </div>
-
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
+                    @role('anggota')
+                        <h4>
+                            Rp.{{number_format(auth()->user()->totalSaldo(), 2)}}
+                        </h4>
+                    @else
+                        <h4>
+                            Rp.{{number_format($savings->sum('saldo'), 2)}}
+                        </h4>
+                    @endrole
                 </div>
             </div>
         </div>
@@ -47,13 +49,15 @@
                 </div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                    @endif
-
-                    You are logged in!
+                    @role('anggota')
+                        <h4>
+                            {{auth()->user()->dataPinjaman()->count()}}
+                        </h4>
+                    @else
+                        <h4>
+                            {{$pengajuan->where('terverifikasi', true)->count()}}
+                        </h4>
+                    @endrole
                 </div>
             </div>
         </div>
@@ -67,13 +71,15 @@
                 </div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                    @endif
-
-                    You are logged in!
+                    @role('anggota')
+                        <h4>
+                            Rp.{{number_format(auth()->user()->totalPinjaman(), 2)}}
+                        </h4>
+                    @else
+                        <h4>
+                            Rp.{{number_format($pengajuan->where('terverifikasi', true)->sum('jumlah_pinjaman'), 2)}}
+                        </h4>
+                    @endrole
                 </div>
             </div>
         </div>
@@ -88,13 +94,15 @@
                 </div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                    @endif
-
-                    You are logged in!
+                    @role('anggota')
+                        <h4>
+                            {{auth()->user()->pengajuanPinjaman()->count()}}
+                        </h4>
+                    @else
+                        <h4>
+                            {{$pengajuan->where('terverifikasi', false)->count()}}
+                        </h4>
+                    @endrole
                 </div>
             </div>
         </div>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Loan;
+use App\Saving;
 
 class HomeController extends Controller
 {
@@ -13,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('verified');
     }
 
     /**
@@ -23,6 +25,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $data = [
+            'pengajuan' => Loan::withCount('user')->get(),
+            'savings'   => Saving::withCount('user')->get(),
+        ];
+
+        return view('home', $data);
     }
 }
