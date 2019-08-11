@@ -6,24 +6,25 @@
     <div class="card">
         <h5 class="card-header">Formulir pengguna baru</h5>
         <div class="card-body">
-            <form action="" method="post">
+            <form action="{{route('users.store')}}" method="post">
+                @csrf
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="nik">NIK:</label>
-                            <input type="text" name="nik" value="" id="nik" class="form-control" placeholder="Nik...">
+                            <label for="nip">NIP:</label>
+                            <input type="number" name="nip" value="{{old('nip')}}" id="nip" class="form-control" placeholder="Nip...">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="email">E-mail:</label>
-                            <input type="email" name="email" value="" id="email" class="form-control" placeholder="Email...">
+                            <input type="email" name="email" value="{{old('email')}}" id="email" class="form-control" placeholder="Email...">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="nama">Nama:</label>
-                            <input type="text" name="nama" value="" id="nama" class="form-control" placeholder="Nama...">
+                            <input type="text" name="name" value="{{old('name')}}" id="nama" class="form-control" placeholder="Nama...">
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -39,19 +40,19 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="jabatan">Jabatan:</label>
-                            <input type="text" name="jabatan" value="" id="jabatan" class="form-control" placeholder="Jabatan...">
+                            <input type="text" name="jabatan" value="{{old('jabatan')}}" id="jabatan" class="form-control" placeholder="Jabatan...">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="alamat">Alamat:</label>
-                            <input type="text" name="alamat" value="" id="alamat" class="form-control" placeholder="Alamat...">
+                            <input type="text" name="alamat" value="{{old('alamat')}}" id="alamat" class="form-control" placeholder="Alamat...">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="no_hp">No Hp:</label>
-                            <input type="number" name="no_hp" value="" id="no_hp" class="form-control" placeholder="+62...">
+                            <label for="phone">No Hp:</label>
+                            <input type="number" name="phone" value="{{old('phone')}}" id="phone" class="form-control" placeholder="+62...">
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -62,11 +63,12 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="akses">Akses:</label>
-                            <select name="akses" id="akses" class="form-control">
+                            <label for="roles">Akses:</label>
+                            <select name="roles" id="roles" class="form-control">
                                 <option value="">Pleace select one</option>
-                                <option value="pria">--</option>
-                                <option value="wanita">--</option>
+                                @foreach ($roles as $role)
+                                    <option value="{{$role}}">{{$role}}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>

@@ -9,6 +9,8 @@
         <main class="py-4">
             <div class="container">
                 <div class="row justify-content-center">
+                    @include('flash::message')
+                    @include('layouts._errors')
                     @yield('content')
                 </div>
             </div>

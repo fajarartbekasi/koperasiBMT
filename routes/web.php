@@ -21,9 +21,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Users anggota,Ketua,bendahara,sekretaris,ketua
 Route::group(['prefix' => 'users', 'namespace' => 'Users'], function(){
-
+    Route::post('/', 'UserController@store')->name('users.store');
     Route::get('create', 'UserController@create')->name('users.create');
     Route::get('{user}/edit', 'UserController@edit')->name('users.edit');
+
+
     Route::get('pegawai','PegawaiController@index')->name('pegawai.index');
     Route::get('anggota','AnggotaController@index')->name('anggota.index');
 });
