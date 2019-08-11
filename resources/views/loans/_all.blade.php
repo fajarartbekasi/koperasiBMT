@@ -11,14 +11,26 @@
         <th scope="col">Tanggal Persetujuan</th>
     </thead>
     <tbody>
-        <td>199312102018081001</td>
-        <td>Steve schoger</td>
-        <td>Maks</td>
-        <td>Rp. 30.000.000</td>
-        <td>1%</td>
-        <td>Rp. 500.000</td>
-        <td>20 bulan</td>
-        <td>10-08-19</td>
-        <td>10-08-19</td>
+        @forelse ($loans as $pinjaman)
+            <tr>
+                <th>
+                    {{$pinjaman->user->nip}}
+                </th>
+                <td>{{$pinjaman->user->name}}</td>
+                <td>{{$pinjaman->type->nama_jenis_pinjaman}}</td>
+                <td>Rp.{{number_format($pinjaman->jumlah_pinjaman, 2)}}</td>
+                <td>{{$pinjaman->type->bunga}}%</td>
+                <td>Rp.{{number_format($pinjaman->jumlah_angsuran, 2)}}</td>
+                <td>{{$pinjaman->lama_angsuran}}bulan</td>
+                <td>{{$pinjaman->tanggal_pengajuan->format('d-m-Y')}}</td>
+                <td>{{$pinjaman->tanggal_persetujuan->format('d-m-Y')}}</td>
+            </tr>
+        @empty
+            <tr>
+                <td colspan="9">
+                    Data pinjaman belum tersedia.
+                </td>
+            </tr>
+        @endforelse
     </tbody>
 </table>
