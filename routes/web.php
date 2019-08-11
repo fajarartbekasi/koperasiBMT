@@ -24,7 +24,7 @@ Route::group(['prefix' => 'users', 'namespace' => 'Users'], function(){
     Route::post('/', 'UserController@store')->name('users.store');
     Route::get('create', 'UserController@create')->name('users.create');
     Route::get('{user}/edit', 'UserController@edit')->name('users.edit');
-
+    Route::patch('{user}/update', 'UserController@update')->name('users.update');
 
     Route::get('pegawai','PegawaiController@index')->name('pegawai.index');
     Route::get('anggota','AnggotaController@index')->name('anggota.index');

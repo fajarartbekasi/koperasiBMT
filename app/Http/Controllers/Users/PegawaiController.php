@@ -21,4 +21,10 @@ class PegawaiController extends Controller
 
         return view('users.pegawai.index', compact('pegawais'));
     }
+    public function create()
+    {
+        $roles = Role::whereNotIn('name', ['anggota'])->get();
+
+        return view('users.pegawai.create', compact('roles'));
+    }
 }
