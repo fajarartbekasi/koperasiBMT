@@ -25,7 +25,7 @@
         </div>
         <table class="table table-striped">
             <thead>
-                <th scope="col">NIK</th>
+                <th scope="col">NIP</th>
                 <th scope="col">Nama</th>
                 <th scope="col">Jenis Kelamin</th>
                 <th scope="col">Jabatan</th>
@@ -34,13 +34,27 @@
                 <th scope="col">Akses</th>
             </thead>
             <tbody>
-                <td>199312102018081001</td>
-                <td>Ketua</td>
-                <td>Pria</td>
-                <td>-</td>
-                <td>6249 Blanda Branch Apt. 843 Lake Freeman, OR 57175-4928</td>
-                <td>081345768690</td>
-                <td>ketua</td>
+                @forelse ($pegawais as $pegawai)
+                    <tr>
+                        <th>
+                            <a href="{{route('users.edit', $pegawai->id)}}">
+                                {{$pegawai->nip}}
+                            </a>
+                        </th>
+                        <td>{{$pegawai->name}}</td>
+                        <td>{{$pegawai->jenis_kelamin}}</td>
+                        <td>{{$pegawai->jabatan ?? '-'}}</td>
+                        <td>{{$pegawai->alamat}}</td>
+                        <td>{{$pegawai->phone}}</td>
+                        <td>{{$pegawai->roles->implode('name',', ')}}</td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="7">
+                            Data pegawai belum tersedia
+                        </td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
     </div>

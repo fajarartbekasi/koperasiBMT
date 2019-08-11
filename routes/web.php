@@ -23,7 +23,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['prefix' => 'users', 'namespace' => 'Users'], function(){
 
     Route::get('create', 'UserController@create')->name('users.create');
-
+    Route::get('{user}/edit', 'UserController@edit')->name('users.edit');
     Route::get('pegawai','PegawaiController@index')->name('pegawai.index');
     Route::get('anggota','AnggotaController@index')->name('anggota.index');
 });
