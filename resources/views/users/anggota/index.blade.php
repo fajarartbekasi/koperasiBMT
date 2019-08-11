@@ -34,13 +34,27 @@
             <th scope="col">Akses</th>
         </thead>
         <tbody>
-            <td>199312102018081001</td>
-            <td>Ketua</td>
-            <td>Pria</td>
-            <td>-</td>
-            <td>6249 Blanda Branch Apt. 843 Lake Freeman, OR 57175-4928</td>
-            <td>081345768690</td>
-            <td>Anggota</td>
+            @forelse ($anggotas as $anggota)
+                <tr>
+                    <th>
+                        <a href="{{route('users.edit', $anggota->id)}}">
+                            {{$anggota->nip}}
+                        </a>
+                    </th>
+                    <td>{{$anggota->name}}</td>
+                    <td>{{$anggota->jenis_kelamin}}</td>
+                    <td>{{$anggota->jabatan}}</td>
+                    <td>{{$anggota->alamat}}</td>
+                    <td>{{$anggota->phone}}</td>
+                    <td>{{$anggota->roles->implode('name', ', ')}}</td>
+                </tr>
+            @empty
+                <tr>
+                    <td colspan="7">
+                        Data anggota belum tersedia
+                    </td>
+                </tr>
+            @endforelse
         </tbody>
     </table>
 </div>
