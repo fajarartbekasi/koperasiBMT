@@ -8,18 +8,23 @@
         <th scope="col">Tanggal persetujuan</th>
     </thead>
     <tbody>
-        <td>199312102018081001</td>
-        <td>Ketua</td>
-        <td>Pria</td>
-        <td>-</td>
-        <td>6249 Blanda Branch Apt. 843 Lake Freeman, OR 57175-4928</td>
-        <td>081345768690</td>
-
-        {{-- jika data kosong --}}
-        <tr>
-            <td colspan="6">
-                Data belum tersedia
-            </td>
-        </tr>
+        @forelse (auth()->user()->pengajuanPinjaman as $pengajuan)
+            <tr>
+                <th>
+                    {{$pengajuan->type->nama_jenis_pinjaman}}
+                </th>
+                <td>Rp.{{number_format($pengajuan->jumlah_pinjaman, 2)}}</td>
+                <td>{{$pengajuan->bunga}}%</td>
+                <td>Rp.{{number_format($pengajuan->jumlah_angsuran, 2)}}</td>
+                <td>{{$pengajuan->lama_angsuran}} bulan</td>
+                <td>{{$pengajuan->tanggal_pengajuan->format('d-m-Y')}}</td>
+            </tr>
+        @empty
+            <tr>
+                <td colspan="6">
+                    Data pengajuan pinjaman belum tersedia.
+                </td>
+            </tr>
+        @endforelse
     </tbody>
 </table>

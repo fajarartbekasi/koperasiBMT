@@ -52,7 +52,7 @@ Route::group(['namespace' => 'Types'], function(){
 Route::group(['prefix'=> 'installments', 'namespace'=>'Installments'], function(){
     route::get('/', 'InstallmentController@index')->name('installments.index');
     Route::get('/{loan}/create', 'InstallmentController@create')->name('installments.create');
-
+    Route::post('{loan}/store', 'InstallmentController@store')->name('installments.store');
 });
 
 // Simpanan

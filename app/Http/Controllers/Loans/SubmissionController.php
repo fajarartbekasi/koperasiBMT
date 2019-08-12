@@ -15,4 +15,22 @@ class SubmissionController extends Controller
 
         return view('submissions.index', compact('submissions'));
     }
+
+    /**
+     * setujui peminjamnan
+     *
+     * @param Loan $loan
+     * @param Request $request
+     */
+    public function store(Loan $loan, Request $request)
+    {
+        $loan->upadte([
+            'terverifikasi'         => true,
+            'tanggal_persetujuan'   => now(),
+        ]);
+
+        flash('Pengajuan pinjaman berhasil di setujui')->success();
+
+        return redirect()->route('submissions');
+    }
 }
