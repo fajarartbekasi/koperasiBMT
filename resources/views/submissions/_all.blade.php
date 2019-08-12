@@ -12,32 +12,47 @@
             <th scope="col">Persetujuan</th>
         </thead>
         <tbody>
-            <td>199312102018081001</td>
-            <td>Ketua</td>
-            <td>Pria</td>
-            <td>-</td>
-            <td>6249 Blanda Branch Apt. 843 Lake Freeman, OR 57175-4928</td>
-            <td>081345768690</td>
-            <td>Anggota</td>
-            <td>Anggota</td>
-            <td>
-                <a href="http://" class="btn btn-sm btn-outline-primary">Setujui</a>
-                <form action="" id="approve-form" style="display:none;">
-                    @csrf
-                </form>
-                <a href="http://" class="btn btn-sm btn-outline-danger">Tolak</a>
-                <form action="" id="approve-form" style="display:none;">
-                    @csrf
-                </form>
-                <a href="http://" class="btn btn-sm btn-outline-info">Cetak</a>
-            </td>
+            @forelse ($submissions as $pengajuan)
+                <tr>
+                    <th>
+                        {{$pengajuan->user->nik}}
+                    </th>
+                    <td>{{$pengajuan->user->name}}</td>
+                    <td>{{$pengajuan->type->nama_jenis_pinjaman}}</td>
+                    <td>Rp.{{number_format($pengajuan->jumlah_pinjaman, 2)}}</td>
+                    <td>{{$pengajuan->type->bunga}}%</td>
+                    <td>Rp.{{number_format($pengajuan->jumlah_angsuran, 2)}}</td>
+                    <td>{{$pengajuan->lama_angsuran}} bulan</td>
+                    <td>{{$pengajuan->tanggal_pengajuan->format('d-m-Y')}}</td>
+                    <td>
+                        <a href="{{ route('submissions.store', $pengajuan->id) }}" class="btn btn-sm btn-primary" onclick="event.preventDefault();
+                           document.getElementById('approve-form').submit();">
+                            Setujui
+                        </a>
+                        <form id="approve-form" action="{{ route('submissions.store', $pengajuan->id) }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
 
-            {{-- jika data kosong --}}
-            <tr>
-                <td colspan="9">
-                    Data belum tersedia
-                </td>
-            </tr>
+                        <a href="{{ route('loans.destroy', $pengajuan->id) }}" class="btn btn-sm btn-danger" onclick="event.preventDefault();
+                           document.getElementById('tolak-form').submit();">
+                            Tolak
+                        </a>
+                        <form id="tolak-form" action="{{ route('loans.destroy', $pengajuan->id) }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+
+                        <a href="{{ route('loans.print', $pengajuan->id)}}" target="_blank" class="btn btn-sm btn-info">Cetak</a>
+                    </td>
+                </tr>
+            @empty
+                {{-- jika data kosong --}}
+                <tr>
+                    <td colspan="9">
+                        Data pengajuan pinjaman belum tersedia.
+                    </td>
+                </tr>
+            @endforelse
+
         </tbody>
     </table>
 </div>
