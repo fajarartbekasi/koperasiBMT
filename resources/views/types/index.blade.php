@@ -38,24 +38,35 @@
                 @endrole
             </thead>
             <tbody>
-                <td>Maks</td>
-                <td>Rp30,000,000.00</td>
-                <td>Rp50,000,000.00</td>
-                <td>20 bulan</td>
-                <td>36 bulan</td>
-                <td>1%</td>
-                {{-- role anggota --}}
-                @role('anggota')
-                    <td scope="col">
-                        <a href="http://" class="btn btn-outline-primary btn-sm">
-                            Ajukan
-                        </a>
-                    </td>
-                @endrole
-                {{-- jika tidak ada data jenis pinjaman --}}
-                <tr>
-                    <td colspan="7">Data belum ada</td>
-                </tr>
+                @forelse ($types as $type)
+                    <tr>
+                        <th>
+                            @role('ketua|bendahara')
+                                <a href="{{route('types.edit', $type->id)}}">
+                                    {{$type->nama_jenis_pinjaman}}
+                                </a>
+                            @else
+                                {{$type->nama_jenis_pinjaman}}
+                            @endrole
+                        </th>
+                        <td>Rp.{{number_format($type->minimum_jumlah_pinjaman, 2)}}</td>
+                        <td>Rp.{{number_format($type->maksimum_jumlah_pinjaman, 2)}}</td>
+                        <td>{{$type->minimum_lama_angsuran}}</td>
+                        <td>{{$type->maksimum_lama_angsuran}}</td>
+                        <td>{{$type->bunga}}%</td>
+                        @role('anggota')
+                            <a href="{{route('loans.create', $type->id)}}" class="btn btn-outline-primary">
+                                Ajukan
+                            </a>
+                        @endrole
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="7">
+                            Data jenis pinjaman belum tersedia.
+                        </td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
     </div>

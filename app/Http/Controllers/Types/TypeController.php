@@ -4,38 +4,48 @@ namespace App\Http\Controllers\Types;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Type;
+use App\Http\Requests\TypesRequest;
 
 class TypeController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * menampilkan data jenis pinjaman
      *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return view('types.index');
+        $types = Type::latest()->paginate(10);
+
+        return view('types.index', compact('types'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * authorize for create jenis pinjaman
      *
-     * @return \Illuminate\Http\Response
      */
     public function create()
     {
+        $this->authorize('create', Type::class);
+
         return view('types.create');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * masukan data jenis pinjaman kedalam database.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TypesRequest $request)
     {
-        //
+        $this->authorize('create', Type::class);
+
+        Type::create($request->all());
+
+        flash('Jenis pinjaman berhasil ditambahkan.');
+
+        return redirect()->route('types.index');
     }
 
     /**
