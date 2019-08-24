@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Loans;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Loan;
 use App\Installment;
 use App\Type;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class LoanController extends Controller
 {
@@ -38,10 +38,10 @@ class LoanController extends Controller
         Loan::create([
                 'user_id'       => auth()->user()->id,
                 'type_id'       => $type->id,
-                'jumlah_pinjaman'   => $type->jumlah_pinjaman,
-                'jumlah_angsuran'   => $type->jumlah_angsuran,
-                'lama_angsuran'     => $type->lama_angsuran,
-                'tanggal_persetujuan'   => now(),
+                'jumlah_pinjaman'   => $request->jumlah_pinjaman,
+                'jumlah_angsuran'   => $request->jumlah_angsuran,
+                'lama_angsuran'     => $request->lama_angsuran,
+                'tanggal_pengajuan'   => now(),
             ]);
 
         flash('Pinjaman berhasil di setujui')->success();
@@ -71,10 +71,11 @@ class LoanController extends Controller
      */
     public function kalkulasi(Type $type, Request $request)
     {
-       $request->validate($request,[
-           'jumlah_pinjaman'    => 'required|numeric|get:minimum_jumlah_pinjaman|lte:maksimum_jumlah_pinjaman',
-           'lama_angsuran'      => 'required|numeric|get:minimum_lama_angsuran|lte:maksimum_lama_angsuran',
-       ]);
+        $request->validate([
+            'jumlah_pinjaman' => 'required|numeric|gte:minimum_jumlah_pinjaman|lte:maksimum_jumlah_pinjaman',
+            'lama_angsuran'   => 'required|numeric|gte:minimum_lama_angsuran|lte:maksimum_lama_angsuran',
+        ]);
+
 
        $persen = $type->bunga / 100;
        $cicilan_pokok = $request->jumlah_pinjaman / $request->lama_angsuran;

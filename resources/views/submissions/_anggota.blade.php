@@ -14,7 +14,7 @@
                     {{$pengajuan->type->nama_jenis_pinjaman}}
                 </th>
                 <td>Rp.{{number_format($pengajuan->jumlah_pinjaman, 2)}}</td>
-                <td>{{$pengajuan->bunga}}%</td>
+                <td>{{$pengajuan->type->bunga}}%</td>
                 <td>Rp.{{number_format($pengajuan->jumlah_angsuran, 2)}}</td>
                 <td>{{$pengajuan->lama_angsuran}} bulan</td>
                 <td>{{$pengajuan->tanggal_pengajuan->format('d-m-Y')}}</td>

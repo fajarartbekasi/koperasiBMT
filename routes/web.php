@@ -37,6 +37,12 @@ Route::group(['prefix' => 'loans', 'namespace' => 'Loans'], function(){
     // Data Pinjaman
     route::get('/', 'LoanController@index')->name('loans');
 
+
+    //Ajukan pinjaman
+    route::get('create/{type}',  'LoanController@create')->name('loans.create');
+    route::post('kalkulasi/{type}','LoanController@kalkulasi')->name('loans.kalkulasi');
+    route::post('store/{type}','LoanController@store')->name('loans.store');
+
     // setujui pinjaman
     route::get('submissions', 'SubmissionController@index')->name('submissions');
 });

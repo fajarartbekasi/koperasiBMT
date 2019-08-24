@@ -55,9 +55,11 @@
                         <td>{{$type->maksimum_lama_angsuran}}</td>
                         <td>{{$type->bunga}}%</td>
                         @role('anggota')
+                        <td>
                             <a href="{{route('loans.create', $type->id)}}" class="btn btn-outline-primary">
                                 Ajukan
                             </a>
+                        </td>
                         @endrole
                     </tr>
                 @empty
