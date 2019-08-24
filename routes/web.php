@@ -59,6 +59,9 @@ Route::group(['prefix'=> 'installments', 'namespace'=>'Installments'], function(
     route::get('/', 'InstallmentController@index')->name('installments.index');
     Route::get('/{loan}/create', 'InstallmentController@create')->name('installments.create');
     Route::post('{loan}/store', 'InstallmentController@store')->name('installments.store');
+
+    // tampilkan data angsuran
+    route::get('/{loan}','InstallmentsController@show')->name('installments.show');
 });
 
 // Simpanan
