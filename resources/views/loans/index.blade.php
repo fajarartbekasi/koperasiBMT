@@ -46,7 +46,9 @@
     @role('sekertaris|bendahara')
         <div class="row">
             <div class="col-md-4">
-                <button type="submit" class="btn btn-outline-secondary">Print all</button>
+                <a href="{{route('loans.cetak')}}">
+                        <button type="submit" class="btn btn-outline-secondary">Print all</button>
+                </a>
             </div>
         </div>
     @endrole
