@@ -1,0 +1,21 @@
+<?php
+
+namespace App\Policies;
+
+use App\User;
+use Illuminate\Auth\Access\HandlesAuthorization;
+
+class SavingPolicy
+{
+    use HandlesAuthorization;
+
+    public function creare(User $user)
+    {
+       return $user->hasRole('bendahara');
+    }
+
+    public function cetak(User $user)
+    {
+        return $user->hasRole(['sekretaris | bendaghara']);
+    }
+}

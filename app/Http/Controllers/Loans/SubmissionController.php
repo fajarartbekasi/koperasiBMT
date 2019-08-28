@@ -24,7 +24,7 @@ class SubmissionController extends Controller
      */
     public function store(Loan $loan, Request $request)
     {
-        $loan->upadte([
+        $loan->update([
             'terverifikasi'         => true,
             'tanggal_persetujuan'   => now(),
         ]);

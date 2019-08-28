@@ -35,7 +35,7 @@ class Loan extends Model
       /**
        * pinjaman memiliki angsuran
        */
-      public function installment()
+      public function installments()
       {
           return $this->hasMany(Installment::class);
       }

@@ -15,7 +15,7 @@
             @forelse ($submissions as $pengajuan)
                 <tr>
                     <th>
-                        {{$pengajuan->user->nik}}
+                        {{$pengajuan->user->nip}}
                     </th>
                     <td>{{$pengajuan->user->name}}</td>
                     <td>{{$pengajuan->type->nama_jenis_pinjaman}}</td>

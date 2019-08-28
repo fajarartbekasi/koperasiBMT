@@ -37,6 +37,10 @@ Route::group(['prefix' => 'loans', 'namespace' => 'Loans'], function(){
     // Data Pinjaman
     route::get('/', 'LoanController@index')->name('loans');
 
+    route::post('{loan}','LoanController@destroy')->name('loans.destroy');
+
+    route::get('print/{loan}','PrintController@show')->name('loans.print');
+
 
     //Ajukan pinjaman
     route::get('create/{type}',  'LoanController@create')->name('loans.create');
@@ -45,6 +49,7 @@ Route::group(['prefix' => 'loans', 'namespace' => 'Loans'], function(){
 
     // setujui pinjaman
     route::get('submissions', 'SubmissionController@index')->name('submissions');
+    route::post('submissions/{loan}','SubmissionController@store')->name('submissions.store');
 });
 
 // jenis pinjaman
@@ -57,11 +62,9 @@ Route::group(['namespace' => 'Types'], function(){
 // Angsuran
 Route::group(['prefix'=> 'installments', 'namespace'=>'Installments'], function(){
     route::get('/', 'InstallmentController@index')->name('installments.index');
+    route::get('/{loan}','InstallmentController@show')->name('installments.show');
     Route::get('/{loan}/create', 'InstallmentController@create')->name('installments.create');
     Route::post('{loan}/store', 'InstallmentController@store')->name('installments.store');
-
-    // tampilkan data angsuran
-    route::get('/{loan}','InstallmentsController@show')->name('installments.show');
 });
 
 // Simpanan

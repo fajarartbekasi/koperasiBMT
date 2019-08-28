@@ -9,19 +9,21 @@
                 <form action="{{route('installments.store', $loan->id)}}" method="post">
                     @csrf
                     <div class="row">
-                        <strong>
-                            Angsuran atas nama: {{$loan->user->name}}
-                        </strong>
-                        <div class="col-md-4">
+                        <div class="col-md-12">
+                            <strong>
+                                Angsuran atas nama: {{$loan->user->name}}
+                            </strong>
+                        </div>
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="jumlah_angsuran">Jumlah angsurans:</label>
-                                <input type="number" name="jumlah_angsuran" value="Rp{{number_format($loan->jumlah_angsuran, 2)}}" id="jumlah_angsuran"
+                                <input type="text" name="jumlah_angsuran" value="Rp{{number_format($loan->jumlah_angsuran, 2)}}" id="jumlah_angsuran"
                                     class="form-control" disabled>
 
                                     <input type="hidden" name="jumlah_angsuran" class="form-control" value="{{$loan->jumlah_angsuran}}">
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="angsuran_ke">Angsuran ke:</label>
                                 <input type="number" name="angsuran_ke" value="{{$angsuran_ke}}" id="angsuran_ke"
