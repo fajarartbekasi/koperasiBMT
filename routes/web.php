@@ -36,7 +36,7 @@ Route::group(['prefix' => 'loans', 'namespace' => 'Loans'], function(){
 
     // Data Pinjaman
     route::get('/', 'LoanController@index')->name('loans');
-
+    route::get('cetak', 'LoanController@cetak')->name('loans.cetak');
     route::post('{loan}','LoanController@destroy')->name('loans.destroy');
 
     route::get('print/{loan}','PrintController@show')->name('loans.print');
@@ -69,7 +69,7 @@ Route::group(['prefix'=> 'installments', 'namespace'=>'Installments'], function(
 
 // Simpanan
 
-Route::group(['namespace'=>'Savings'], function(){
+Route::group(['namespace'=>'Savings'],  function(){
     route::resource('savings','SavingController');
 });
 

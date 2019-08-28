@@ -9,9 +9,14 @@
                         d="M5 5a5 5 0 0 1 10 0v2A5 5 0 0 1 5 7V5zM0 16.68A19.9 19.9 0 0 1 10 14c3.64 0 7.06.97 10 2.68V20H0v-3.32z" />
                 </svg>
                 <div class="lh-100">
-                    <h6 class="mb-1 text-white lh-100">Total Saldo :</h6>
+                    <div>
+                        <h3 class="mb-1 text-white lh-100">KOPERASI BMT.:</h3>
+                    </div>
+                    <div>
+                        <h5 class="mb-1 text-white lh-100">Alamat :</h5>
+                    </div>
                     <strong class="text-white">
-                        Rp : 1000000
+                        Badan Hukum
                     </strong>
                 </div>
             </div>

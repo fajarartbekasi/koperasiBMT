@@ -1,18 +1,25 @@
 <table class="table table-striped">
     <thead>
-        <th scope="col">Nik</th>
-        <th scope="col">Nama anggota</th>
-        <th scope="col">E-mail</th>
-        <th scope="col">Total saldo</th>
+        <tr>
+            <th scope="col">Nip</th>
+            <th scope="col">Nama anggota</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">Total saldo</th>
+        </tr>
     </thead>
     <tbody>
-        <td>Maks</td>
-        <td>Rp30,000,000.00</td>
-        <td>Rp50,000,000.00</td>
-        <td>20 bulan</td>
-        {{-- jika tidak ada data jenis pinjaman --}}
-        <tr>
-            <td colspan="4">Data belum ada</td>
-        </tr>
+        @forelse ($users as $anggota)
+            <tr>
+                <td>{{$anggota->nip}}</td>
+                <td>{{$anggota->name}}</td>
+                <td>{{$anggota->email}}</td>
+                <td>Rp. {{number_format($anggota->totalSaldo(), 2)}}</td>
+            </tr>
+        @empty
+            {{-- jika tidak ada data jenis pinjaman --}}
+            <tr>
+                <td colspan="4">Data belum ada</td>
+            </tr>
+        @endforelse
     </tbody>
 </table>

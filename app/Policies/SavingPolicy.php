@@ -9,13 +9,13 @@ class SavingPolicy
 {
     use HandlesAuthorization;
 
-    public function creare(User $user)
+    public function create(User $user)
     {
        return $user->hasRole('bendahara');
     }
 
     public function cetak(User $user)
     {
-        return $user->hasRole(['sekretaris | bendaghara']);
+        return $user->hasRole(['sekretaris|bendahara']);
     }
 }

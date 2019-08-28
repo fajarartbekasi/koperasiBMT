@@ -13,7 +13,8 @@
         </div>
     </div>
 
-    <form action="" method="post">
+    <form action="{{route('savings.store')}}" method="post">
+       @csrf
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">

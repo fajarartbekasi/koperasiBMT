@@ -15,17 +15,17 @@
 
     {{-- role sekretaris|bendahara --}}
     @role('sekertaris|bendahara')
-        <form action="" method="get">
+        <form action="{{route('loans.cetak')}}" method="get">
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
-                        <input type="date" name="" class="form-control" id="date">
+                        <input type="date" name="dari_tgl" class="form-control" id="date">
                     </div>
                 </div>
                 <label for="" class="mt-2">S/D</label>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <input type="date" name="" class="form-control" id="date">
+                        <input type="date" name="sampai_tgl" class="form-control" id="date">
                     </div>
                 </div>
                 <div class="col-md-3">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Loans;
 
+use PDF;
 use App\Loan;
 use App\Installment;
 use App\Type;
@@ -83,5 +84,20 @@ class LoanController extends Controller
        $angsuran = $cicilan_pokok + $bunga;
 
        return view('loans.kalkulasi', compact('type','request','angsuran'));
+    }
+
+    public function cetak(Request $request)
+    {
+        $this->authorize('cetak', Loan::class);
+
+        if($request->has('dari_tgl')){
+            $loans = Loan::with('user','type')->whereBetWeen('tanggal_persetujuan',[request('dari_tgl'),
+            request('sampai_tgl')])->get();
+        }else{
+            $loans = Loan::with('user','type')->where('terverifikasi', true)->get();
+        }
+        $pdf = PDF::loadView('cetak.loans', compact('loans'))->setPaper('a4', 'landscape');
+
+        return $pdf->stream('laporan_pinjaman.pdf');
     }
 }
