@@ -31,6 +31,7 @@
                         </a>
                         <form id="approve-form" action="{{ route('submissions.store', $pengajuan->id) }}" method="POST" style="display: none;">
                             @csrf
+                            <input type="text" name="phone" id="" value="{{$pengajuan->user->phone}}">
                         </form>
 
                         <a href="{{ route('loans.destroy', $pengajuan->id) }}" class="btn btn-sm btn-danger" onclick="event.preventDefault();

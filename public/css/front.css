@@ -10644,124 +10644,96 @@ a.text-dark:focus {
   }
 }
 
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+/* GLOBAL STYLES
+-------------------------------------------------- */
+
+/* Padding below the footer and lighter body text */
+
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+/* Carousel base class */
+
+.carousel {
+  margin-bottom: 4rem;
 }
 
-html,
-body {
-  overflow-x: hidden;
-  /* Prevent scroll on narrow devices */
+/* Since positioning the image, we need to help out the caption */
+
+.carousel-caption {
+  bottom: 3rem;
+  z-index: 10;
 }
 
-body {
-  padding-top: 56px;
+/* Declare heights because of positioning of img element */
+
+.carousel-item {
+  height: 32rem;
 }
 
-@media (max-width: 991.98px) {
-  .offcanvas-collapse {
-    position: fixed;
-    top: 56px;
-    /* Height of navbar */
-    bottom: 0;
-    left: 100%;
-    width: 100%;
-    padding-right: 1rem;
-    padding-left: 1rem;
-    overflow-y: auto;
-    visibility: hidden;
-    background-color: #343a40;
-    transition: transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
-  }
-
-  .offcanvas-collapse.open {
-    visibility: visible;
-    transform: translateX(-100%);
-  }
+.carousel-item > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 32rem;
 }
 
-.nav-scroller {
-  position: relative;
-  z-index: 2;
-  height: 2.75rem;
-  overflow-y: hidden;
-}
+/* MARKETING CONTENT
+-------------------------------------------------- */
 
-.nav-scroller .nav {
-  display: flex;
-  flex-wrap: nowrap;
-  padding-bottom: 1rem;
-  margin-top: -1px;
-  overflow-x: auto;
-  color: rgba(255, 255, 255, 0.75);
+/* Center align the text within the three columns below the carousel */
+
+.marketing .col-lg-4 {
+  margin-bottom: 1.5rem;
   text-align: center;
-  white-space: nowrap;
-  -webkit-overflow-scrolling: touch;
 }
 
-.nav-underline .nav-link {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  font-size: 0.875rem;
-  color: #6c757d;
+.marketing h2 {
+  font-weight: 400;
 }
 
-.nav-underline .nav-link:hover {
-  color: #007bff;
+.marketing .col-lg-4 p {
+  margin-right: 0.75rem;
+  margin-left: 0.75rem;
 }
 
-.nav-underline .active {
-  font-weight: 500;
-  color: #343a40;
+/* Featurettes
+------------------------- */
+
+.featurette-divider {
+  margin: 5rem 0;
+  /* Space out the Bootstrap <hr> more */
 }
 
-.text-white-50 {
-  color: rgba(255, 255, 255, 0.5);
-}
+/* Thin out the marketing headings */
 
-.bg-purple {
-  background-color: #6f42c1;
-}
-
-.lh-100 {
+.featurette-heading {
+  font-weight: 300;
   line-height: 1;
+  letter-spacing: -0.05rem;
 }
 
-.lh-125 {
-  line-height: 1.25;
-}
+/* RESPONSIVE CSS
+-------------------------------------------------- */
 
-.lh-150 {
-  line-height: 1.5;
-}
+@media (min-width: 40em) {
+  /* Bump up size of carousel content */
 
-.bd-placeholder-img {
-  font-size: 1.125rem;
-  text-anchor: middle;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
+  .carousel-caption p {
+    margin-bottom: 1.25rem;
+    font-size: 1.25rem;
+    line-height: 1.4;
+  }
 
-@media (min-width: 768px) {
-  .bd-placeholder-img-lg {
-    font-size: 3.5rem;
+  .featurette-heading {
+    font-size: 50px;
   }
 }
 
-.full-height {
-  height: 100vh;
-}
-
-.flex-center {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-}
-
-.position-ref {
-  position: relative;
+@media (min-width: 62em) {
+  .featurette-heading {
+    margin-top: 7rem;
+  }
 }
 
