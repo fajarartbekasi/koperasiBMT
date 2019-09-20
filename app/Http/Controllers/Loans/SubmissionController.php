@@ -25,12 +25,12 @@ class SubmissionController extends Controller
      */
     public function store(Loan $loan, Request $request)
     {
-        // $loan->update([
-        //     'terverifikasi'         => true,
-        //     'tanggal_persetujuan'   => now(),
-        // ]);
+        $loan->update([
+            'terverifikasi'         => true,
+            'tanggal_persetujuan'   => now(),
+        ]);
 
-       $sms =    Nexmo::message()->send(
+       Nexmo::message()->send(
                     [
                         'to'    => '+62' . $request->phone,
                         'from'  => 'Koperasi BMT',
@@ -38,7 +38,6 @@ class SubmissionController extends Controller
                     ]
                 );
 
-            dd($sms);
 
         flash('Pengajuan pinjaman berhasil di setujui')->success();
 

@@ -1,5 +1,5 @@
-<div class="nav-scroller bg-white shadow-sm">
-    <nav class="nav nav-underline">
+<div class="nav-scroller bg-white shadow-sm text-center">
+    <nav class="nav nav-underline d-flex justify-content-center">
 
         @if (Route::has('login'))
             @auth
@@ -21,14 +21,7 @@
                         <a class="nav-link" href="{{route('savings.index')}}">Saldo</a>
                     @endrole
                     {{-- start role ketua|bendahara|anggota --}}
-            @else
-                <div class="flex-center position-ref full-right">
-                    <a href="{{ route('login') }}" class="nav-link">Login</a>
 
-                    @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="nav-link">Register</a>
-                    @endif
-                </div>
              @endauth
         @endif
 
