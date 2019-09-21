@@ -8,6 +8,7 @@ use App\User;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Notifications\Messages\NexmoMessage;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Nexmo\Laravel\Facade\Nexmo;
 
@@ -44,24 +45,28 @@ class CronSms extends Command
      */
     public function handle()
     {
+        /**
+         * mengambil tanggal 30 hari dari tiap bulan
+         * dimulai dari januari
+         */
         $get_last_date_every_month = Carbon::now()
                                             ->lastOfMonth()
                                             ->toDateString();
-
-        // $get_installment = Installment::where('loan_id',3)->get(['tanggal_bayar']);
-
+        /**
+         * Mengambil data pinjaman
+         */
         $loan = Loan::first();
 
-        $angs = Installment::whereNotIn('loan_id')
-            ->whereBetween('tanggal_bayar', $get_last_date_every_month)
-            ->first();
+        $angs = Installment::
+                    whereNotIn('loan_id',[$loan->id])
+                    ->whereBetween('tanggal_bayar',['$laon->tanggal_persetujuan', $get_last_date_every_month])
+                    ->orWhereNull('tanggal_bayar')
+                    ->get();
 
-        // if ($angs > $get_last_date_every_month) {
-        //    return Nexmo::message()->send([
-        //        'to' => '+6281384531904',
-        //        'from'   => 'Chaerul Fajar Subhi',
-        //        'text'   => 'Hello, Kata Abang Roma jangan begadang, lalu kenapa filmnya tayangnya malam'
-        //    ]);
-        // }
+        return Nexmo::message()->send([
+            'to' => '+62'. $loan->user->phone,
+            'from'   => 'Chaerul Fajar Subhi',
+            'text'   => 'Hello, Kata Abang Roma jangan begadang, lalu kenapa filmnya tayangnya malam'
+        ]);
     }
 }
