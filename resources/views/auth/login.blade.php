@@ -3,46 +3,91 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+        <div class="col-md-5">
+            <div class="card shadow border-0">
+                <div class="card-body rounded-lg">
+                    <p class="text-muted text-center mb-5">Tentukan Pilihan anda ?</p>
+                    <div class="d-flex justify-content-center mb-5">
+                        <a href="{{ route('register') }}" class="btn btn-white mr-3 text-button-login shadow-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 viewBox="0 0 20 20"
+                                 width="20"
+                                 height="20"
+                                 class="mr-3">
+                                <path fill="#5e72e4" d="M12.3 3.7l4 4L4 20H0v-4L12.3 3.7zm1.4-1.4L16 0l4 4-2.3 2.3-4-4z" />
+                            </svg>
+                            Buat akun baru
+                        </a>
+                        @if (Route::has('password.request'))
+                            <a href="{{ route('password.request') }}" class="btn btn-white text-button-login shadow-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 20 20"
+                                    width="20"
+                                    height="20"
+                                    class="mr-3">
+                                    <path
+                                        fill="#5e72e4"
+                                        d="M12.26 11.74L10 14H8v2H6v2l-2 2H0v-4l8.26-8.26a6 6 0 1 1 4 4zm4.86-4.62A3 3 0 0 0 15 2a3 3 0 0 0-2.12.88l4.24 4.24z" />
+                                    </svg>
+                                Lupa Password ?
+                            </a>
+                        @endif
 
-                <div class="card-body">
+                    </div>
+                    <hr>
+                    <p class="text-muted text-center pt-3 mb-5">Login dengan akun</p>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
-
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
+                        <div class="input-group mb-4 shadow-sm">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text border-0 bg-white">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                         viewBox="0 0 20 20"
+                                         width="20"
+                                         height="20"
+                                         class="mr-2zZZZ">
+                                        <path
+                                            fill="#eeeeee"
+                                            d="M18 2a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4c0-1.1.9-2 2-2h16zm-4.37 9.1L20 16v-2l-5.12-3.9L20 6V4l-10 8L0 4v2l5.12 4.1L0 14v2l6.37-4.9L10 14l3.63-2.9z" />
+                                        </svg>
+                                </div>
                             </div>
+                            <input type="email"
+                                   name="email"
+                                   id="email"
+                                   class="form-control border-0 text-muted {{ $errors->has('email') ? ' is-invalid' : '' }}"
+                                   value="{{ old('email') }}"
+                                   placeholder="Email"
+                                   required autofocus>
+                        </div>
+                        <div class="input-group mb-2 mt-3 shadow-sm">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text border-0 bg-white">
+
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20" >
+                                            <path fill="#eeeeee" d="M12.3 3.7l4 4L4 20H0v-4L12.3 3.7zm1.4-1.4L16 0l4 4-2.3 2.3-4-4z" />
+                                        </svg>
+                                </div>
+                            </div>
+                            <input type="password"
+                                   name="password"
+                                   id="password"
+                                   class="form-control border-0 text-muted {{ $errors->has('password') ? ' is-invalid' : '' }}"
+                                   placeholder="Password"
+                                   required>
+
+                                   @if ($errors->has('password'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('password') }}</strong>
+                                        </span>
+                                    @endif
                         </div>
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                        <div class="form-group row pt-3">
+                            <div class="col-md-6 ">
+                                <div class="form-check ">
+                                    <input class="form-check-input shadow-sm" type="checkbox" name="remember" id="remember"
+                                        {{ old('remember') ? 'checked' : '' }}>
 
                                     <label class="form-check-label" for="remember">
                                         {{ __('Remember Me') }}
@@ -51,18 +96,11 @@
                             </div>
                         </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
+                        <div class="d-flex justify-content-center pt-3 mb-3">
+                            <button type="submit" class="btn btn-primary shadow-sm">
+                                {{ __('Sign In') }}
+                            </button>
 
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
                         </div>
                     </form>
                 </div>

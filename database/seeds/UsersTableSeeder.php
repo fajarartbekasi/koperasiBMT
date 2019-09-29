@@ -65,6 +65,7 @@ class UsersTableSeeder extends Seeder
             'email'    => 'anggota@koperasi.com',
             'email_verified_at' => now(),
             'password' => bcrypt('koperasi'),
+            'phone'    => '89672650972',
         ]);
 
         $anggota->assignRole('anggota');

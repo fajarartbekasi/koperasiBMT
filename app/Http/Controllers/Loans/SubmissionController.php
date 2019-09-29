@@ -34,7 +34,7 @@ class SubmissionController extends Controller
                     [
                         'to'    => '+62' . $request->phone,
                         'from'  => 'Koperasi BMT',
-                        'text'  => 'Selamat pengajuan pinjaman anda kami terima',
+                        'text'  => 'Selamat pengajuan pinjaman anda kami terimakasih',
                     ]
                 );
 

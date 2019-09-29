@@ -7,7 +7,7 @@
         @include('layouts.partials.section')
 
         <main class="py-4 px-4">
-            <div class="content ">
+            <div class="content">
                 <div class="row justify-content-center">
                     @include('flash::message')
                     @include('layouts._errors')
