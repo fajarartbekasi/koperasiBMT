@@ -49,8 +49,14 @@ class CronSms extends Command
          * mengambil tanggal 30 hari dari tiap bulan
          * dimulai dari januari
          */
+        // $get_last_date_every_month = Carbon::now()
+        //                                      ->lastOfMonth()
+        //                                      ->addDays(8)
+        //                                      ->diffInDays(now()->firstOfMonth());
+
         $get_last_date_every_month = Carbon::now()
                                             ->lastOfMonth()
+                                            ->addDays(7)
                                             ->toDateString();
         /**
          * Mengambil data pinjaman
@@ -63,10 +69,10 @@ class CronSms extends Command
                     ->orWhereNull('tanggal_bayar')
                     ->get();
 
-        return Nexmo::message()->send([
-            'to' => '+62'. $loan->user->phone,
-            'from'   => 'Chaerul Fajar Subhi',
-            'text'   => 'Hello, Kata Abang Roma jangan begadang, lalu kenapa filmnya tayangnya malam'
+                    return Nexmo::message()->send([
+                        'to' => '+62'. $loan->user->phone,
+                        'from'   => 'KOPERASI BMT',
+                        'text'   => 'Hello,' . $loan->user->name . 'pengajuan pinjaman anda telah kami setujui'
         ]);
     }
 }
