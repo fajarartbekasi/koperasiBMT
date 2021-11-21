@@ -13,9 +13,7 @@
     <div class="content px-3">
         <div class="row">
             <div class="col-md-4">
-                KOPERASI BMT<br />
-                <u>PRAMUKA NO. 79 BEKASI</u>
-
+                {{ config('app.name', 'Laravel') }}<br />
                 <br />
 
                 <dl class="dl-horizontal">
@@ -23,7 +21,7 @@
                     <dd>
                         Permohonan Pinjaman Uang <br />
                         pada Unit Simpan Pinjam <br />
-                       BMT.
+                       {{ config('app.name', 'Laravel') }}
                     </dd>
                 </dl>
             </div>
@@ -32,7 +30,7 @@
         <div class="row text-left">
             <div class="col-md-4">
                 Kepada Yth, <br />
-                KETUA KOPERASI BMT <br />
+                KETUA {{ config('app.name', 'Laravel') }} <br />
                 Di.<u>Bekasi</u>
             </div>
         </div>
@@ -46,14 +44,14 @@
                         <strong>Nip</strong> : {{ $loan->user->nip }} <br />
                         <strong>Jabatan</strong> : - <br />
                         <strong>No Hp</strong> : {{ $loan->user->no_hp }} <br />
-                        Dengan ini saya mengajukan permohonan Pinjaman Uang kepada Ketua Koperasi BMT
+                        Dengan ini saya mengajukan permohonan Pinjaman Uang kepada Ketua {{ config('app.name', 'Laravel') }}
                         Sebesar <strong>Rp{{ number_format($loan->jumlah_pinjaman, 2) }}</strong> Adapun uang tersebut
                         akan saya pergunakan
                         untuk keperluan
                         .................................................................................
                     </li>
                     <li>
-                        Dalam hal ini saya bersedia dan sanggup memenuhi kewajiban saya kepada Koperasi BMT, bahwa hutang tersebut
+                        Dalam hal ini saya bersedia dan sanggup memenuhi kewajiban saya kepada {{ config('app.name', 'Laravel') }}, bahwa hutang tersebut
                         diatas pembayarannya langsung dipotong dari hasil gaji setiap bulan selama
                         <strong>{{ $loan->lama_angsuran }}</strong>
                         dengan jasa pinjaman sebesar <strong>{{ $loan->type->bunga }}%</strong> tetap mulai
@@ -67,7 +65,7 @@
                     <li>
                         Bersama ini saya (Pemohon) memberikan Kuasa kepada Ketua BMT untuk
                         memotong langsung pinjaman saya
-                        kepada Koperasi BMT dari hasil Gaji setiap bulan sampai lunas.
+                        kepada {{ config('app.name', 'Laravel') }} dari hasil Gaji setiap bulan sampai lunas.
                     </li>
                     <li>
                         Demikian permohonan saya ini, semoga Bapak dapat mengabulkannya dan atas kebijaksanaan Bapak,

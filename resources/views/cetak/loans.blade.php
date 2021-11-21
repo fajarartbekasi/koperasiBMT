@@ -12,14 +12,14 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="text-center">
+                    <img src="{{asset('asset/img/tamansiswa.png')}}" alt="" width="10%" height="10%">
                     <P>
                         <b>
-                            <h3>KOPERASI BMT
-                                <br>
-                                Alamat</h3>
-                            <h4>BADAN HUKUM NO : </h4>
-                            <hr>
-                        </b></P>
+                            <h6>
+                                {{ config('app.name', 'Laravel') }}
+                            </h6>
+                        </b>
+                    </P>
                 </div>
                 @if (request('dari_tgl'))
                 <small>dari tanggal {{ request('dari_tgl') }} sampai tanggal {{ request('sampai_tgl') }}</small>

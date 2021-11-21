@@ -14,12 +14,11 @@
                 <div class="text-center">
                     <P>
                         <b>
-                            <h3>KOPERASI BMT
-                                <br>
-                                Alamat</h3>
-                            <h4>BADAN HUKUM NO : </h4>
-                            <hr>
-                        </b></P>
+                            <h6>
+                                {{ config('app.name', 'Laravel') }}
+                            </h6>
+                        </b>
+                    </P>
                 </div>
                 <h4><u>Laporan Data Simpanan</u></h4>
 
