@@ -12,12 +12,12 @@ class PegawaiController extends Controller
 
     public function __construct()
     {
-        $this->middleware(['role:sekretaris|ketua','verified']);
+        $this->middleware(['role:bendahara','verified']);
     }
 
     public function index()
     {
-        $pegawais = User::role(['ketua','bendahara','sekretaris'])->get();
+        $pegawais = User::role(['ketua','bendahara'])->get();
 
         return view('users.pegawai.index', compact('pegawais'));
     }

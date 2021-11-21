@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Penarikan;
+use App\Tabungan;
 use App\Loan;
-use App\Saving;
 
 class HomeController extends Controller
 {
@@ -26,8 +28,9 @@ class HomeController extends Controller
     public function index()
     {
         $data = [
-            'pengajuan' => Loan::withCount('user')->get(),
-            'savings'   => Saving::withCount('user')->get(),
+            'pengajuan' => Loan::with('user')->where('user_id', Auth::user()->id),
+            'savings'   => Tabungan::with('user')->where('user_id', Auth::user()->id),
+            'penarikan'   => Tabungan::with('penarikans')->where('user_id', Auth::user()->id)->count(),
         ];
 
         return view('home', $data);

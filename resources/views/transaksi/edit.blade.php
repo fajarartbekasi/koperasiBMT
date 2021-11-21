@@ -6,27 +6,15 @@
         <div class="col-md-5">
             <div class="card shadow border-0">
                 <div class="card-body rounded-lg">
-                    <h5 class="text-muted text-center mb-3">Formulir tabungan</h5>
-                    <div class="d-flex justify-content-center mb-5">
-                        <div class="alert alert-info" role="alert">
-                            <strong class="text-danger">
-                                Setiap Saldo masuk otomatis menambahkan saldo anggota,
-                            </strong>
-                            <strong class="text-danger">
-                                bulan dan tanggal saldo masuk sesuai saat bendahara menambahkan saldo.
-                            </strong>
-                        </div>
-                    </div>
-                    <form method="POST" action="{{route('savings.store')}}">
+                    <h5 class="text-muted text-center mb-3">Formulir Penarikan</h5>
+
+                    <form method="POST" action="{{route('transaksi.store', $saving->id)}}">
                         @csrf
+                        @method('PATCH')
                         <div class="form-group">
-                            <label for="">Pilih Anggota</label>
-                            <select name="user_id" class="form-control" id="">
-                                <option value="">Pilih Anggota</option>
-                                @foreach($roles as $role)
-                                    <option value="{{$role->id}}">{{$role->name}}</option>
-                                @endforeach
-                            </select>
+                            <label for="">Nama Anggota</label>
+                            <input type="text" name="" id="" value="{{$saving->user->name}}" class="form-control">
+                            <input type="hidden" name="tabungan_id" id="" value="{{$saving->id}}" class="form-control">
                         </div>
                         <label for="jumlah_pinjaman" class="text-muted">Nominal tabungan</label>
                         <div class="input-group mb-4 shadow-sm">
@@ -40,10 +28,10 @@
                                 </div>
                             </div>
                             <input type="number"
-                                   name="saldo"
-                                   id="saldo"
+                                   name="total"
+                                   id="total"
                                    class="form-control border-0 text-muted"
-                                   value=""
+                                   value="{{$saving->saldo}}"
                                    required>
 
                         </div>

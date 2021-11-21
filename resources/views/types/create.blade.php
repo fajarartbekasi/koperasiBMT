@@ -44,10 +44,10 @@
                                             </div>
                                         </div>
                                         <input type="number"
-                                               name="minumum_jumlah_pinjaman"
-                                               id="minumum_jumlah_pinjaman"
+                                               name="minimum_jumlah_pinjaman"
+                                               id="minimum_jumlah_pinjaman"
                                                class="form-control border-0 text-muted"
-                                               value="{{ old('minumum_jumlah_pinjaman') }}"
+                                               value="{{ old('minimum_jumlah_pinjaman') }}"
                                                placeholder="Minimum jumlah pinjaman.."
                                                required>
                                     </div>
@@ -124,7 +124,7 @@
                                                id="bunga"
                                                class="form-control border-0 text-muted"
                                                value="{{ old('bunga') }}"
-                                               placeholder="Minimum lama angsuran.." required>
+                                               placeholder="bunga....." required>
                                     </div>
                                 </div>
                             </div>

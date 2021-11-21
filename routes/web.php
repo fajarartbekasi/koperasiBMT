@@ -70,11 +70,27 @@ Route::group(['prefix'=> 'installments', 'namespace'=>'Installments'], function(
 // Simpanan
 
 Route::group(['namespace'=>'Savings'],  function(){
-    route::resource('savings','SavingController');
+    route::get('', 'SavingController@index')->name('savings');
+    route::get('create', 'SavingController@create')->name('savings.create');
+    route::post('store', 'SavingController@store')->name('savings.store');
+    route::get('edit/{saving}', 'SavingController@edit')->name('savings.edit');
+    route::patch('update/{saving}', 'SavingController@update')->name('savings.update');
 });
 
 // cetak laporan
 
 Route::group(['namespace'=>'Reports'],function(){
     Route::get('report/savings', 'ReportController@savings')->name('reports.savings');
+});
+
+Route::group(['prefix' => 'transaksi'], function(){
+    route::get('', 'TransaksiController@index')->name('transaksi');
+    route::get('edit/{saving}', 'TransaksiController@edit')->name('transaksi.edit');
+    route::patch('store/{saving}', 'TransaksiController@store')->name('transaksi.store');
+
+    route::get('cetak-butki/{penarikan}','KwitansiController@show')->name('transaksi.cetak-bukti');
+});
+
+Route::group(['prefix' => 'penarikan'], function(){
+    route::get('','PenarikanController@index')->name('penarikan');
 });

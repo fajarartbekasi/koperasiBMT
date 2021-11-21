@@ -11,7 +11,6 @@ class Role extends \Spatie\Permission\Models\Role
         return [
             'ketua',
             'bendahara',
-            'sekretaris',
             'anggota',
         ];
     }

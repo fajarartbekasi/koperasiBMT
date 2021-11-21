@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSavingsTable extends Migration
+class CreatePenarikansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,15 @@ class CreateSavingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('savings', function (Blueprint $table) {
+        Schema::create('penarikans', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('user_id');
-            $table->integer('saldo');
+            $table->unsignedInteger('tabungan_id');
+            $table->string('total');
             $table->timestamps();
 
-            $table->foreign('user_id')
+            $table->foreign('tabungan_id')
                 ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
+                ->on('tabungans');
         });
     }
 
@@ -33,6 +32,6 @@ class CreateSavingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('savings');
+        Schema::dropIfExists('penarikans');
     }
 }

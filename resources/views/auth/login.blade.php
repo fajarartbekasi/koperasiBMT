@@ -6,35 +6,7 @@
         <div class="col-md-5">
             <div class="card shadow border-0">
                 <div class="card-body rounded-lg">
-                    <p class="text-muted text-center mb-5">Tentukan Pilihan anda ?</p>
-                    <div class="d-flex justify-content-center mb-5">
-                        <a href="{{ route('register') }}" class="btn btn-white mr-3 text-button-login shadow-sm">
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                 viewBox="0 0 20 20"
-                                 width="20"
-                                 height="20"
-                                 class="mr-3">
-                                <path fill="#5e72e4" d="M12.3 3.7l4 4L4 20H0v-4L12.3 3.7zm1.4-1.4L16 0l4 4-2.3 2.3-4-4z" />
-                            </svg>
-                            Buat akun baru
-                        </a>
-                        @if (Route::has('password.request'))
-                            <a href="{{ route('password.request') }}" class="btn btn-white text-button-login shadow-sm">
-                                <svg xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20"
-                                    width="20"
-                                    height="20"
-                                    class="mr-3">
-                                    <path
-                                        fill="#5e72e4"
-                                        d="M12.26 11.74L10 14H8v2H6v2l-2 2H0v-4l8.26-8.26a6 6 0 1 1 4 4zm4.86-4.62A3 3 0 0 0 15 2a3 3 0 0 0-2.12.88l4.24 4.24z" />
-                                    </svg>
-                                Lupa Password ?
-                            </a>
-                        @endif
 
-                    </div>
-                    <hr>
                     <p class="text-muted text-center pt-3 mb-5">Login dengan akun</p>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf

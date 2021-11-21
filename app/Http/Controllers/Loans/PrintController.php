@@ -11,7 +11,7 @@ class PrintController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('role:bendahara|sekretaris');
+        $this->middleware('role:bendahara|ketua');
     }
 
     public function show(Loan $loan)

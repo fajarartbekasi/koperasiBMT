@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-white">
     <div class="d-flex align-items-center">
-        <img src="{{asset('asset/logo/koperasi_indonesia.png')}}" class="rounded d-block mr-2" width="10%" height="10%">
+        <img src="{{asset('asset/img/tamansiswa.png')}}" class="rounded d-block mr-2" width="10%" height="10%">
         <div>
             <a class="navbar-brand mr-auto mr-lg-0 text-muted" href="#">
                 {{ config('app.name', 'Laravel') }}

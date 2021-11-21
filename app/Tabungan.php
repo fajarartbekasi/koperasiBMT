@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Saving extends Model
+class Tabungan extends Model
 {
-    protected $table = 'savings';
+    protected $table = 'tabungans';
 
     protected $guarded = [];
 
@@ -17,5 +17,9 @@ class Saving extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    public function penarikans()
+    {
+        return $this->hasMany(Penarikan::class);
     }
 }

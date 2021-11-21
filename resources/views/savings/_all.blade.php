@@ -5,20 +5,25 @@
             <th scope="col">Nama anggota</th>
             <th scope="col">E-mail</th>
             <th scope="col">Total saldo</th>
+            <th scope="col">Options</th>
         </tr>
     </thead>
     <tbody>
         @forelse ($users as $anggota)
             <tr>
-                <td>{{$anggota->nip}}</td>
-                <td>{{$anggota->name}}</td>
-                <td>{{$anggota->email}}</td>
-                <td>Rp. {{number_format($anggota->totalSaldo(), 2)}}</td>
+                <td>{{$anggota->user->nip}}</td>
+                <td>{{$anggota->user->name}}</td>
+                <td>{{$anggota->user->email}}</td>
+                <td>Rp. {{number_format($anggota->saldo, 2)}}</td>
+                <td>
+                    <a href="{{route('savings.edit', $anggota->id)}}" class="btn btn-info btn-sm">Tambah saldo</a>
+                    <a href="{{route('transaksi.edit', $anggota->id)}}" class="btn btn-info btn-sm">Tarik Uang</a>
+                </td>
             </tr>
         @empty
             {{-- jika tidak ada data jenis pinjaman --}}
             <tr>
-                <td colspan="4">Data belum ada</td>
+                <td colspan="5">Data belum ada</td>
             </tr>
         @endforelse
     </tbody>

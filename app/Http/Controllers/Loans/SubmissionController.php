@@ -30,15 +30,6 @@ class SubmissionController extends Controller
             'tanggal_persetujuan'   => now(),
         ]);
 
-       Nexmo::message()->send(
-                    [
-                        'to'    => '+62' . $request->phone,
-                        'from'  => 'Koperasi BMT',
-                        'text'  => 'Selamat pengajuan pinjaman anda kami terimakasih',
-                    ]
-                );
-
-
         flash('Pengajuan pinjaman berhasil di setujui')->success();
 
         return redirect()->route('submissions');

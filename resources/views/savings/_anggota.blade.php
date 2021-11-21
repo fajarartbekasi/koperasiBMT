@@ -6,7 +6,7 @@
         </tr>
     </thead>
     <tbody>
-        @forelse (auth()->user()->savings as $simpanan)
+        @forelse (auth()->user()->tabungans as $simpanan)
             <tr>
                 <td>Rp.{{number_format($simpanan->saldo, 2)}}</td>
                 <td>{{$simpanan->created_at->format('d-m-Y')}}</td>

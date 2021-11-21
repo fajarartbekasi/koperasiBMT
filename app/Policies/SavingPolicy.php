@@ -16,6 +16,6 @@ class SavingPolicy
 
     public function cetak(User $user)
     {
-        return $user->hasRole(['sekretaris|bendahara']);
+        return $user->hasRole(['ketua|bendahara']);
     }
 }

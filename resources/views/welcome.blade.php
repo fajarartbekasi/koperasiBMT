@@ -76,21 +76,17 @@
             <a href="{{ url('/home') }}">Home</a>
             @else
             <a href="{{ route('login') }}">Login</a>
-
-            @if (Route::has('register'))
-            <a href="{{ route('register') }}">Register</a>
-            @endif
             @endauth
         </div>
         @endif
 
         <div class="content">
-            <img src="{{asset('asset/img/logo.png')}}"
+            <img src="{{asset('asset/img/tamansiswa.png')}}"
                  width="50%" height="50%" alt="">
             <div class="title">
-                Koperasi BMT
+                Koperasi
             </div>
-            <div class="second-title">BAITUL MAAL WAT TANWIL</div>
+            <div class="second-title">SMK TAMAN SISWA</div>
         </div>
     </div>
 </body>

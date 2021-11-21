@@ -21,7 +21,7 @@
         <div class="text-center">
             <div class="row">
                 @role('anggota')
-                    <div class="col-md-3 col-md-offset-1">
+                    <div class="col-md-4 col-md-offset-1">
                         <h5>
                             Rp.{{number_format(auth()->user()->totalSaldo(), 2)}}
                             <br>
@@ -29,8 +29,10 @@
                         </h5>
                     </div>
                     @else
-                    <div class="col-md-3 col-md-offset-1">
+                    <div class="col-md-4 col-md-offset-1">
                         <h5>Rp.{{number_format($savings->sum('saldo'), 2)}}</h5>
+                        <br>
+                        <small>Tabungan</small>
                     </div>
                 @endrole
                 @role('anggota')
@@ -46,6 +48,8 @@
                         <h5>
                             {{$pengajuan->where('terverifikasi', true)->count()}}
                         </h5>
+                        <br>
+                        <small>Data Pinjaman</small>
                     </div>
                 @endrole
                 @role('anggota')
@@ -61,10 +65,12 @@
                         <h5>
                             Rp.{{number_format($pengajuan->where('terverifikasi', true)->sum('jumlah_pinjaman'), 2)}}
                         </h5>
+                        <br>
+                        <small>Total Pinjaman</small>
                     </div>
                 @endrole
                 @role('anggota')
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <h5>
                        {{auth()->user()->pengajuanPinjaman()->count()}}
                         <br>
@@ -72,10 +78,33 @@
                     </h5>
                 </div>
                 @else
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <h5>
                         {{$pengajuan->where('terverifikasi', false)->count()}}
                     </h5>
+                    <br>
+                        <small class="text-muted">Pengajuan pinjaman</small>
+                </div>
+                @endrole
+                @role('anggota')
+                <div class="col-md-4">
+                    <h5>
+                       {{$penarikan}}
+                        <br>
+                        <a href="{{route('penarikan')}}">
+                            <small class="text-muted">Penarikan</small>
+                        </a>
+
+                    </h5>
+                </div>
+                @else
+                <div class="col-md-4">
+                    <h5 class="mb-3">
+                        {{$pengajuan->where('terverifikasi', false)->count()}}
+                    </h5>
+                    <a href="{{route('penarikan')}}">
+                            <small class="text-muted">Penarikan</small>
+                        </a>
                 </div>
                 @endrole
             </div>

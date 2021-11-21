@@ -36,7 +36,7 @@
             @include('savings._all')
         @endrole
 
-        @role('sekertaris|bendahara')
+        @role('bendahara')
             <a href="{{route('reports.savings')}}" class="btn btn-outline-secondary">
                 Cetak data
             </a>

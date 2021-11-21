@@ -13,8 +13,8 @@
         </div>
     </div>
 
-    {{-- role sekretaris|bendahara --}}
-    @role('sekertaris|bendahara')
+    {{-- role sekretaris|ketua --}}
+    @role('bendahara|ketua')
         <form action="{{route('loans.cetak')}}" method="get">
             <div class="row">
                 <div class="col-md-4">
@@ -43,7 +43,7 @@
         @include('loans._all')
     @endrole
     {{-- role sekretaris|bendahara --}}
-    @role('sekertaris|bendahara')
+    @role('ketua|bendahara')
         <div class="row">
             <div class="col-md-4">
                 <a href="{{route('loans.cetak')}}">

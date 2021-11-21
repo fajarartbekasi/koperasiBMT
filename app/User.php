@@ -3,7 +3,7 @@
 namespace App;
 
 use App\Loan;
-use App\Saving;
+use App\Tabungan;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -51,16 +51,16 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * anggota memiliki tabungan
      */
-    public function savings()
+    public function tabungans()
     {
-        return $this->hasMany(Saving::class);
+        return $this->hasMany(Tabungan::class);
     }
     /**
      * Total saldo anggota
      */
     public function Totalsaldo()
     {
-        return $this->savings()->sum('saldo');
+        return $this->tabungans()->sum('saldo');
     }
     /**
      * hitung data pengajuan pinjaman

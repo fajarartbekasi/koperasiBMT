@@ -10,7 +10,7 @@
             <div class="lh-100">
                 <h6 class="mb-0 text-white lh-100">Jenis pinjaman</h6>
             </div>
-            @role('ketua|bendahara')
+            @role('bendahara')
                 <div class="ml-auto">
                     <a href="{{route('types.create')}}">
                         <button type="button" class="btn btn-outline-light text-white">
@@ -41,7 +41,7 @@
                 @forelse ($types as $type)
                     <tr>
                         <th>
-                            @role('ketua|bendahara')
+                            @role('bendahara')
                                 <a href="{{route('types.edit', $type->id)}}">
                                     {{$type->nama_jenis_pinjaman}}
                                 </a>

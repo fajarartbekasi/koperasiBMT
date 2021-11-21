@@ -17,11 +17,11 @@ class LoanPolicy
      */
     public function show(User $user, Loan $loan)
     {
-        return $user->hasRole(['sekretaris|ketua|bendahara']) || $loan->user->id == $user->id;
+        return $user->hasRole(['ketua|bendahara']) || $loan->user->id == $user->id;
     }
     public function create(User $user)
     {
-       return $user->hasRole('sekretaris|bendahara');
+       return $user->hasRole('bendahara');
     }
     public function cetak(User $user)
     {

@@ -43,21 +43,6 @@ class UsersTableSeeder extends Seeder
         $this->command->warn($bendahara->email);
         $this->command->warn('Password is "koperasi"');
 
-        // sekretaris
-        $sekretaris = factory(User::class)->create([
-            'nip'      => '199312102018081003',
-            'name'     => 'SEKRETARIS',
-            'email'    => 'sekretaris@koperasi.com',
-            'email_verified_at' => now(),
-            'password' => bcrypt('koperasi'),
-        ]);
-
-        $sekretaris->assignRole('sekretaris');
-
-        $this->command->info('>_ Here is your sekretaris details to login:');
-        $this->command->warn($sekretaris->email);
-        $this->command->warn('Password is "koperasi"');
-
         // anggota
         $anggota = factory(User::class)->create([
             'nip'      => '199312102018081004',

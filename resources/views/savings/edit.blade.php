@@ -17,16 +17,13 @@
                             </strong>
                         </div>
                     </div>
-                    <form method="POST" action="{{route('savings.store')}}">
+                    <form method="POST" action="{{route('savings.update', $saving->id)}}">
                         @csrf
+                        @method('PATCH')
                         <div class="form-group">
-                            <label for="">Pilih Anggota</label>
-                            <select name="user_id" class="form-control" id="">
-                                <option value="">Pilih Anggota</option>
-                                @foreach($roles as $role)
-                                    <option value="{{$role->id}}">{{$role->name}}</option>
-                                @endforeach
-                            </select>
+                            <label for="">Nama Anggota</label>
+                            <input type="text" name="" id="" value="{{$saving->user->name}}" class="form-control">
+                            <input type="hidden" name="user_id" id="" value="{{$saving->user->id}}" class="form-control">
                         </div>
                         <label for="jumlah_pinjaman" class="text-muted">Nominal tabungan</label>
                         <div class="input-group mb-4 shadow-sm">
@@ -43,7 +40,7 @@
                                    name="saldo"
                                    id="saldo"
                                    class="form-control border-0 text-muted"
-                                   value=""
+                                   value="{{$saving->saldo}}"
                                    required>
 
                         </div>

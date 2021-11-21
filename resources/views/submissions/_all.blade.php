@@ -9,7 +9,9 @@
             <th scope="col">Jumlah angsuran</th>
             <th scope="col">Lama angsuran</th>
             <th scope="col">Tanggal persetujuan</th>
-            <th scope="col">Persetujuan</th>
+            @role('bendahara')
+                <th scope="col">Persetujuan</th>
+            @endrole
         </thead>
         <tbody>
             @forelse ($submissions as $pengajuan)
@@ -24,26 +26,28 @@
                     <td>Rp.{{number_format($pengajuan->jumlah_angsuran, 2)}}</td>
                     <td>{{$pengajuan->lama_angsuran}} bulan</td>
                     <td>{{$pengajuan->tanggal_pengajuan->format('d-m-Y')}}</td>
-                    <td>
-                        <a href="{{ route('submissions.store', $pengajuan->id) }}" class="btn btn-sm btn-primary" onclick="event.preventDefault();
-                           document.getElementById('approve-form').submit();">
-                            Setujui
-                        </a>
-                        <form id="approve-form" action="{{ route('submissions.store', $pengajuan->id) }}" method="POST" style="display: none;">
-                            @csrf
-                            <input type="text" name="phone" id="" value="{{$pengajuan->user->phone}}">
-                        </form>
+                    @role('bendahara')
+                        <td>
+                            <a href="{{ route('submissions.store', $pengajuan->id) }}" class="btn btn-sm btn-primary" onclick="event.preventDefault();
+                            document.getElementById('approve-form').submit();">
+                                Setujui
+                            </a>
+                            <form id="approve-form" action="{{ route('submissions.store', $pengajuan->id) }}" method="POST" style="display: none;">
+                                @csrf
+                                <input type="text" name="phone" id="" value="{{$pengajuan->user->phone}}">
+                            </form>
 
-                        <a href="{{ route('loans.destroy', $pengajuan->id) }}" class="btn btn-sm btn-danger" onclick="event.preventDefault();
-                           document.getElementById('tolak-form').submit();">
-                            Tolak
-                        </a>
-                        <form id="tolak-form" action="{{ route('loans.destroy', $pengajuan->id) }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
+                            <a href="{{ route('loans.destroy', $pengajuan->id) }}" class="btn btn-sm btn-danger" onclick="event.preventDefault();
+                            document.getElementById('tolak-form').submit();">
+                                Tolak
+                            </a>
+                            <form id="tolak-form" action="{{ route('loans.destroy', $pengajuan->id) }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
 
-                        <a href="{{ route('loans.print', $pengajuan->id)}}" target="_blank" class="btn btn-sm btn-info">Cetak</a>
-                    </td>
+                            <a href="{{ route('loans.print', $pengajuan->id)}}" target="_blank" class="btn btn-sm btn-info">Cetak</a>
+                        </td>
+                    @endrole
                 </tr>
             @empty
                 {{-- jika data kosong --}}
