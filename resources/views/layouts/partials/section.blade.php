@@ -1,4 +1,4 @@
-<div class="nav-scroller bg-white shadow-sm text-center">
+<div class="nav-scroller bg-white shadow-sm text-center pt-2">
     <nav class="nav nav-underline d-flex justify-content-center">
 
             @guest
