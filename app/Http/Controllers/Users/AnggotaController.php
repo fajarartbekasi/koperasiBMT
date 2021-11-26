@@ -13,7 +13,7 @@ class AnggotaController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['role:bendahara', 'verified']);
+        $this->middleware(['role:bendahara']);
     }
     /**
      * Mengambil data pengguna dengan akses anggota.

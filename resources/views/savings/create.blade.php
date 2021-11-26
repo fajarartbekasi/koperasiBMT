@@ -10,11 +10,13 @@
                     <div class="d-flex justify-content-center mb-5">
                         <div class="alert alert-info" role="alert">
                             <strong class="text-danger">
-                                Setiap Saldo masuk otomatis menambahkan saldo anggota,
+                                Nominal yang dimasukan pada kolom dibawah ini sudah meliputi
                             </strong>
-                            <strong class="text-danger">
-                                bulan dan tanggal saldo masuk sesuai saat bendahara menambahkan saldo.
-                            </strong>
+                            <ul>
+                                <li class="text-danger">Simpanan Pokok</li>
+                                <li class="text-danger">Simpanan Wajib</li>
+                                <li class="text-danger">Simpanan Suka Rela</li>
+                            </ul>
                         </div>
                     </div>
                     <form method="POST" action="{{route('savings.store')}}">

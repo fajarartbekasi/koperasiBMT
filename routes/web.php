@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/welcome','WelcomeController@index')->name('welcome');
 
 Auth::routes(['verify' => true]);
 

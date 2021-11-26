@@ -46,7 +46,10 @@ class SavingController extends Controller
     {
         $saving = Tabungan::findOrFail($id);
 
-        $saving->update($request->all());
+        $hitung = $saving->saldo + $request->saldo;
+        $saving->update([
+            'saldo' => $hitung
+        ]);
 
         flash('Tabungan anda berhasil ditambahkan.')->success();
 

@@ -9,11 +9,9 @@
                     d="M2 6H0v2h2v2h2V8h2V6H4V4H2v2zm7 0a3 3 0 0 1 6 0v2a3 3 0 0 1-6 0V6zm11 9.14A15.93 15.93 0 0 0 12 13c-2.91 0-5.65.78-8 2.14V18h16v-2.86z" />
             </svg>
             <div class="lh-100">
-                <h2 class="mb-0 text-white lh-100">Koperasi BMT</h2>
+                <h2 class="mb-0 text-white lh-100">{{ config('app.name', 'Laravel') }}</h2>
                 <small class="text-white">Alamat koperasi :</small>
                 <br>
-                <small class="text-white">Badan Hukum No : </small>
-                <small></small>
             </div>
         </div>
 

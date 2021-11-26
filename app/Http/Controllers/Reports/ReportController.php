@@ -14,9 +14,9 @@ class ReportController extends Controller
     {
         $this->authorize('cetak', Saving::class);
 
-        $users = User::role('anggota')->with('savings')->get();
+        $users = User::role('anggota')->with('tabungans')->get();
 
-        $pdf = PDF::loadView('cetak.savings', compact('users'));
+        $pdf = PDF::loadView('cetak.savings', compact('users'))->setPaper('a4', 'landscape');
 
         return $pdf->stream('laporan_simpanan.pdf');
     }

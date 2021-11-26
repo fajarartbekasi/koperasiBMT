@@ -37,7 +37,7 @@
                             <th>
                                 {{ $user->nip }}
                             </th>
-                            <td>{{ $user->nama }}</td>
+                            <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>Rp{{ number_format($user->totalSaldo(), 2) }}</td>
                         </tr>

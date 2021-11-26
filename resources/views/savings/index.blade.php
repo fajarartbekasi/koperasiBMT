@@ -10,14 +10,11 @@
                 </svg>
                 <div class="lh-100">
                     <div>
-                        <h3 class="mb-1 text-white lh-100">KOPERASI BMT.:</h3>
+                        <h3 class="mb-1 text-white lh-100">{{ config('app.name', 'Laravel') }}.:</h3>
                     </div>
                     <div>
                         <h5 class="mb-1 text-white lh-100">Alamat :</h5>
                     </div>
-                    <strong class="text-white">
-                        Badan Hukum
-                    </strong>
                 </div>
             </div>
         @endrole

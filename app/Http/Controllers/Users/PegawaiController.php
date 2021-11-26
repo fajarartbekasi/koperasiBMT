@@ -12,7 +12,7 @@ class PegawaiController extends Controller
 
     public function __construct()
     {
-        $this->middleware(['role:bendahara','verified']);
+        $this->middleware(['role:bendahara']);
     }
 
     public function index()

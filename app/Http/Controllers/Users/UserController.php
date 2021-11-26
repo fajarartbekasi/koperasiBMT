@@ -15,7 +15,7 @@ class UserController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['role:bendahara', 'verified']);
+        $this->middleware(['role:bendahara']);
     }
      /**
       * Tampilkan formulir pengguna baru
