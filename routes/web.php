@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/welcome','WelcomeController@index')->name('welcome');
+Route::get('','WelcomeController@index')->name('welcome');
 
-Auth::routes(['verify' => true]);
+Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -68,7 +68,7 @@ Route::group(['prefix'=> 'installments', 'namespace'=>'Installments'], function(
 // Simpanan
 
 Route::group(['namespace'=>'Savings'],  function(){
-    route::get('', 'SavingController@index')->name('savings');
+    route::get('/anggota', 'SavingController@index')->name('savings.anggota');
     route::get('create', 'SavingController@create')->name('savings.create');
     route::post('store', 'SavingController@store')->name('savings.store');
     route::get('edit/{saving}', 'SavingController@edit')->name('savings.edit');

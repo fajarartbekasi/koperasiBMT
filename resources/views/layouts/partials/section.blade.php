@@ -1,7 +1,7 @@
 <div class="nav-scroller bg-white shadow-sm text-center pt-2">
     <nav class="nav nav-underline d-flex justify-content-center">
 
-            
+
         @if (Route::has('login'))
 
             @auth
@@ -20,11 +20,11 @@
                         <a class="nav-link" href="{{route('installments.index')}}">Data Angsuran</a>
                     {{-- start role ketua|bendahara|anggota --}}
                     @role('bendahara|ketua|anggota')
-                        <a class="nav-link" href="{{route('savings')}}">Saldo</a>
+                        <a class="nav-link" href="{{route('savings.anggota')}}">Saldo</a>
                     @endrole
                     {{-- start role ketua|bendahara|anggota --}}
                     @role('bendahara|ketua')
-                        <a class="nav-link" href="{{route('transaksi')}}">Penarikan</a>
+                        <a class="nav-link" href="{{route('transaksi')}}">Pengambilan</a>
                     @endrole
              @endauth
         @endif

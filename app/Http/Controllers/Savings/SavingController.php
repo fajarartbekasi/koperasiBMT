@@ -18,8 +18,6 @@ class SavingController extends Controller
 
     public function create()
     {
-
-
         $roles = User::all();
         return view('savings.create',compact('roles'));
     }
