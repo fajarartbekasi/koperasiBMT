@@ -17,7 +17,7 @@
                 <div class="card-body">
                     @role('bendahara')
                         <div class="mb-2">
-                            <a href="{{route('savings')}}" class="btn btn-info ">Tambah penarikan</a>
+                            <a href="{{route('savings.anggota')}}" class="btn btn-info ">Tambah penarikan</a>
                         </div>
                     @endrole
                     <div>

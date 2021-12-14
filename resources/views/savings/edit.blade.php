@@ -56,7 +56,7 @@
                             <button type="submit" class="btn btn-white mr-2 text-button-login shadow-sm">
                                 {{ __('Simpan tabungan') }}
                             </button>
-                            <a href="{{route('savings')}}" class="btn btn-warning shadow-sm">
+                            <a href="{{route('savings.anggota')}}" class="btn btn-warning shadow-sm">
                                 Batalkan
                             </a>
                         </div>

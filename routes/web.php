@@ -67,7 +67,7 @@ Route::group(['prefix'=> 'installments', 'namespace'=>'Installments'], function(
 
 // Simpanan
 
-Route::group(['namespace'=>'Savings'],  function(){
+Route::group(['namespace'=>'savings'],  function(){
     route::get('/anggota', 'SavingController@index')->name('savings.anggota');
     route::get('create', 'SavingController@create')->name('savings.create');
     route::post('store', 'SavingController@store')->name('savings.store');
