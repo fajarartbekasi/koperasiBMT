@@ -78,7 +78,12 @@
                             </select>
                         </div>
                     </div>
-
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="">Password</label>
+                            <input type="password" name="password" class="form-control" id="" value="{{$pegawai->password}}">
+                        </div>
+                    </div>
                     <div class="col-md-4">
                         <button type="submit" class="btn btn-outline-primary">
                             Simpan

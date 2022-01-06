@@ -37,7 +37,7 @@
                         </div>
                         <div class="d-flex justify-content-center pt-3 mb-3">
                             <button type="submit" class="btn btn-white mr-2 text-button-login shadow-sm">
-                                {{ __('Simpan tabungan') }}
+                                {{ __('Tarik Saldo') }}
                             </button>
                             <a href="{{route('savings.anggota')}}" class="btn btn-warning shadow-sm">
                                 Batalkan

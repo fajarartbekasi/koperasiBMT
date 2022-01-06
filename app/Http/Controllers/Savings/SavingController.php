@@ -32,7 +32,7 @@ class SavingController extends Controller
 
         flash('Tabungan anda berhasil ditambahkan.')->success();
 
-        return redirect()->route('savings');
+        return redirect()->route('savings.anggota');
     }
     public function edit($id)
     {
@@ -51,6 +51,6 @@ class SavingController extends Controller
 
         flash('Tabungan anda berhasil ditambahkan.')->success();
 
-        return redirect()->route('savings');
+        return redirect()->route('savings.anggota');
     }
 }

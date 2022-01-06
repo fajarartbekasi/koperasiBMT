@@ -34,6 +34,6 @@ class TransaksiController extends Controller
                 ]);
             }
             flash('Transaksi pengembalian berhasil dilakukan');
-            return redirect()->route('savings');
+            return redirect()->route('savings.anggota');
     }
 }
