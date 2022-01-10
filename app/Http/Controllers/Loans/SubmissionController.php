@@ -30,7 +30,7 @@ class SubmissionController extends Controller
             'tanggal_persetujuan'   => now(),
         ]);
 
-        flash('Pengajuan pinjaman berhasil di setujui')->success();
+        flash('Pengajuan pinjaman berhasil di ajukan')->success();
 
         return redirect()->route('submissions');
     }

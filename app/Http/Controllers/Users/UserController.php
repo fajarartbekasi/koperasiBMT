@@ -80,11 +80,6 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if(auth()->user()->id == $id){
-            flash('Peringatan ! Pembaruan pengguna yang saat ini masuk tidak diizinkan,
-                   silahkan menggunakan fitur pengaturan.')->warning();
-            return redirect()->back();
-        }
 
         $user = User::findOrFail($id);
         $user->fill($request->except('roles','password'));
