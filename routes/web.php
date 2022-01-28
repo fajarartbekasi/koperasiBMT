@@ -67,12 +67,12 @@ Route::group(['prefix'=> 'installments', 'namespace'=>'Installments'], function(
 
 // Simpanan
 
-Route::group(['prefix' =>'savings','namespace'=>'savings'],  function(){
-    route::get('/anggota', 'SavingController@index')->name('savings.anggota');
-    route::get('create', 'SavingController@create')->name('savings.create');
-    route::post('store', 'SavingController@store')->name('savings.store');
-    route::get('edit/{saving}', 'SavingController@edit')->name('savings.edit');
-    route::patch('update/{saving}', 'SavingController@update')->name('savings.update');
+Route::group(['prefix' =>'savings'],  function(){
+    route::get('/anggota', 'Savings\SavingController@index')->name('savings.anggota');
+    route::get('create', 'Savings\SavingController@create')->name('savings.create');
+    route::post('store', 'Savings\SavingController@store')->name('savings.store');
+    route::get('edit/{saving}', 'Savings\SavingController@edit')->name('savings.edit');
+    route::patch('update/{saving}', 'Savings\SavingController@update')->name('savings.update');
 });
 
 // cetak laporan
