@@ -67,7 +67,7 @@ Route::group(['prefix'=> 'installments', 'namespace'=>'Installments'], function(
 
 // Simpanan
 
-Route::group(['namespace'=>'savings'],  function(){
+Route::group(['prefix' =>'savings','namespace'=>'savings'],  function(){
     route::get('/anggota', 'SavingController@index')->name('savings.anggota');
     route::get('create', 'SavingController@create')->name('savings.create');
     route::post('store', 'SavingController@store')->name('savings.store');
@@ -77,7 +77,7 @@ Route::group(['namespace'=>'savings'],  function(){
 
 // cetak laporan
 
-Route::group(['namespace'=>'Reports'],function(){
+Route::group(['prefix' =>'reports','namespace'=> 'reports'],function(){
     Route::get('report/savings', 'ReportController@savings')->name('reports.savings');
 });
 
