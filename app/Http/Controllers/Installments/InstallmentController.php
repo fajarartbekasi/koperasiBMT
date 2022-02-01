@@ -59,7 +59,7 @@ class InstallmentController extends Controller
         Nexmo::message()->send([
             'to'   => '+62' . $loan->user->phone,
             'from' => 'KOPERASI TAMAN SISWA',
-            'text' => 'Assallamuaikum wr.wb kami dari smk taman siswa ingin memberitahukan bahwa pengajuan pinjaman anda sudah kami setujui berikut ini adalah perinciannya'
+            'text' => 'Assallamuaikum wr.wb kami dari smk taman siswa ingin memberitahukan mengenai rincian angsuran pinjaman anda'
                 . 'Nama Peminjam ' . $loan->user->name
                 . 'Jumlah Pembayaran ' . $loan->jumlah_bayar
                 . 'Angsuran ke- ' . $request->get('angsuran_ke')
