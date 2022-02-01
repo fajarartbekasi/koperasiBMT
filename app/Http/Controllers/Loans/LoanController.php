@@ -6,8 +6,10 @@ use PDF;
 use App\Loan;
 use App\Installment;
 use App\Type;
+use Nexmo\Laravel\Facade\Nexmo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class LoanController extends Controller
 {
@@ -36,7 +38,7 @@ class LoanController extends Controller
      */
     public function store(Type $type, Request $request)
     {
-        Loan::create([
+       Loan::create([
                 'user_id'       => auth()->user()->id,
                 'type_id'       => $type->id,
                 'jumlah_pinjaman'   => $request->jumlah_pinjaman,
@@ -55,10 +57,18 @@ class LoanController extends Controller
      * @param Loan $loan
      * @return void
      */
-    public function destroy(Loan $loan)
+    public function destroy(Request $request, $id)
     {
-        $loan->delete();
+        $loan = Loan::findOrFail($id);
 
+        Nexmo::message()->send([
+            'to'   => '+62' . $loan->user->phone,
+            'from' => 'KOPERASI TAMAN SISWA',
+            'text' => 'Assallamuaikum wr.wb kami dari smk taman siswa ingin memberitahukan bahwa pengajuan pinjaman anda tidak dapat kami setujui karena saldo anda kurang dari RP.2.000.000. terimakasih'
+                       . 'KOPERASI TAMAN SISWA'
+        ]);
+
+        $loan->delete($request->all());
         flash('Pengajuan pinjaman berhasil ditolak');
 
         return redirect()->route('submissions');

@@ -7,6 +7,7 @@ use App\Installment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Carbon;
+use Nexmo\Laravel\Facade\Nexmo;
 
 class InstallmentController extends Controller
 {
@@ -32,6 +33,7 @@ class InstallmentController extends Controller
             'loan'  => $loan,
             'angsuran_ke'   => $loan->installments()->count() + 1,
         ];
+
         return view('installments.create', $data);
     }
     /**
@@ -54,6 +56,17 @@ class InstallmentController extends Controller
             'tanggal_bayar' => now(),
         ]);
 
+        Nexmo::message()->send([
+            'to'   => '+62' . $loan->user->phone,
+            'from' => 'KOPERASI TAMAN SISWA',
+            'text' => 'Assallamuaikum wr.wb kami dari smk taman siswa ingin memberitahukan bahwa pengajuan pinjaman anda sudah kami setujui berikut ini adalah perinciannya'
+                . 'Nama Peminjam ' . $loan->user->name
+                . 'Jumlah Pembayaran ' . $loan->jumlah_bayar
+                . 'Angsuran ke- ' . $request->get('angsuran_ke')
+                . 'Tanggal Pembayaran ' . now()
+                . 'terimakasih '
+                . 'PENGURUS KOPERASI TAMAN SISWA'
+        ]);
         flash('Angsuran anda berhasil disimpan')->success();
         return redirect()->route('installments.show', $loan->id);
     }
