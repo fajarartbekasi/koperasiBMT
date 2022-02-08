@@ -23,6 +23,37 @@
             </a>
         </div>
     </div>
+
+    <div class="mb-3 pt-3">
+        <div class="card border-0">
+            <div class="card-body">
+                <h6>Cari Laporan</h6>
+                <form action="{{route('reports.anggota')}}" method="get">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="date" name="tgl_awal" id="" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="date" name="tgl_akhir" id="" class="form-control">
+                            </div>
+                        </div>
+                        <div class="ml-3">
+                            <div class="d-flex">
+                                <button class="btn btn-outline-info">
+                                    Cari Laporan
+                                </button>
+                                <a href="{{route('reports.all.anggota')}}" class="btn btn-outline-info ml-2">Cetak Semua Data</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <table class="table table-striped">
         <thead>
             <th scope="col">NIK</th>
@@ -30,6 +61,7 @@
             <th scope="col">Jenis Kelamin</th>
             <th scope="col">Jabatan</th>
             <th scope="col">Alamat</th>
+            <th scope="col">Created</th>
             <th scope="col">Telepon</th>
             <th scope="col">Akses</th>
         </thead>
@@ -45,6 +77,7 @@
                     <td>{{$anggota->jenis_kelamin}}</td>
                     <td>{{$anggota->jabatan}}</td>
                     <td>{{$anggota->alamat}}</td>
+                    <td>{{$anggota->created_at->format('d-m-Y')}}</td>
                     <td>{{$anggota->phone}}</td>
                     <td>{{$anggota->roles->implode('name', ', ')}}</td>
                 </tr>

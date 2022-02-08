@@ -10,8 +10,35 @@
             <div class="lh-100">
                 <h6 class="mb-0 text-white lh-100">Data Angsuran</h6>
             </div>
-
         </div>
+        @role('bendahara')
+            <div class="card border-0">
+                <div class="card-body">
+                    <h6>Cari laporan</h6>
+                    <form action="{{route('reports.moon.installments')}}" method="get">
+
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="date" name="tgl_awal" id="" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="date" name="tgl_akhir" id="" class="form-control">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="ml-3 d-flex">
+                            <button class="btn btn-outline-info">Cari laporan</button>
+                            <a href="{{route('reports.installments')}}" class="btn btn-outline-info ml-2">Cetak Semua Laporan</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        @endrole
         {{-- table angsuran pinjaman --}}
         @role('anggota')
             @include('installments._anggota')

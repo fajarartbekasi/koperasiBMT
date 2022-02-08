@@ -47,7 +47,7 @@ class LoanController extends Controller
                 'tanggal_pengajuan'   => now(),
             ]);
 
-        flash('Pinjaman berhasil di setujui')->success();
+        flash('Pinjaman berhasil di ajukan')->success();
 
         return redirect()->route('submissions');
     }
