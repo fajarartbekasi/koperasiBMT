@@ -64,7 +64,7 @@ class LoanController extends Controller
         Nexmo::message()->send([
             'to'   => '+62' . $loan->user->phone,
             'from' => 'KOPERASI TAMAN SISWA',
-            'text' => 'Assallamuaikum wr.wb kami dari smk taman siswa ingin memberitahukan bahwa pengajuan pinjaman anda tidak dapat kami setujui karena saldo anda kurang dari RP.2.000.000. terimakasih'
+            'text' => 'Assallamualaikum wr.wb kami dari smk taman siswa ingin memberitahukan bahwa pengajuan pinjaman anda tidak dapat kami setujui karena saldo anda kurang dari RP.2.000.000. terimakasih'
                        . 'KOPERASI TAMAN SISWA'
         ]);
 
