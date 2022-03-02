@@ -58,7 +58,7 @@
                                 placeholder="Alamat...">
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label for="phone">No Hp:</label>
                             <input type="number" name="phone" value="{{old('phone', $pegawai->phone)}}" id="phone" class="form-control"
@@ -66,7 +66,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label for="roles">Akses:</label>
                             <select name="roles" id="roles" class="form-control">
@@ -78,13 +78,8 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="">Password</label>
-                            <input type="password" name="password" class="form-control" id="" value="{{$pegawai->password}}">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
+
+                    <div class="col-md-6">
                         <button type="submit" class="btn btn-outline-primary">
                             Simpan
                         </button>

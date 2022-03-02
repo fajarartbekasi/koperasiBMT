@@ -82,11 +82,7 @@ class UserController extends Controller
     {
 
         $user = User::findOrFail($id);
-        $user->fill($request->except('roles','password'));
-
-        if($request->get('password')){
-            $user->password = bcrypt($request->get('password'));
-        }
+        $user->fill($request->except('roles'));
 
         $user->save();
         $user->syncRoles($request->get('roles'));
