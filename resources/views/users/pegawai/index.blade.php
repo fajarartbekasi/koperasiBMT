@@ -32,6 +32,7 @@
                 <th scope="col">Alamat</th>
                 <th scope="col">Telepon</th>
                 <th scope="col">Akses</th>
+                <th scope="col">Tanggal Bergabung</th>
             </thead>
             <tbody>
                 @forelse ($pegawais as $pegawai)
@@ -47,6 +48,7 @@
                         <td>{{$pegawai->alamat}}</td>
                         <td>{{$pegawai->phone}}</td>
                         <td>{{$pegawai->roles->implode('name',', ')}}</td>
+                        <td>{{$pegawai->created_at->format('Y-m-d')}}</td>
                     </tr>
                 @empty
                     <tr>

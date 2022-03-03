@@ -22,13 +22,18 @@
                     </P>
                 </div>
                 @if (request('dari_tgl'))
-                <small>dari tanggal {{ request('tgl_awal') }} sampai tanggal {{ request('tgl_akhir') }}</small>
+                <small class="text-center">dari tanggal {{ request('tgl_awal') }} sampai tanggal {{ request('tgl_akhir') }}</small>
                 @endif
-
-                <u>
-                    <h4>Laporan Angsuran Anggota</h4>
-                </u>
-
+                <div class="text-center ">
+                    <u>
+                        <h4>Laporan Angsuran Anggota</h4>
+                    </u>
+                </div>
+                <div class="text-center mb-3">
+                    @if (request('tgl_awal'))
+                        <small>Dari tanggal {{ request('tgl_awal') }} &nbsp; sampai tanggal {{ request('tgl_akhir') }}</small>
+                    @endif
+                </div>
                 <table class="table table-striped">
                     <thead>
                         <tr>

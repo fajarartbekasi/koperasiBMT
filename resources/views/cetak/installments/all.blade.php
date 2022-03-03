@@ -21,10 +21,12 @@
                         </b>
                     </P>
                 </div>
+                <div class="text-center mb-3">
+                    <u>
+                        <h4>Laporan Seluruh Angsuran Anggota</h4>
+                    </u>
+                </div>
 
-                <u>
-                    <h4>Laporan Seluruh Angsuran Anggota</h4>
-                </u>
 
                 <table class="table table-striped">
                     <thead>

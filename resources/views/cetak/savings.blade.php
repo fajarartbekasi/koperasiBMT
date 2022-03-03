@@ -12,6 +12,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="text-center">
+                    <img src="{{asset('asset/img/tamansiswa.png')}}" alt="" width="10%" height="10%">
                     <P>
                         <b>
                             <h6>
@@ -20,7 +21,7 @@
                         </b>
                     </P>
                 </div>
-                <h4><u>Laporan Data Simpanan</u></h4>
+                <h4 class="mb-3 text-center"><u>Laporan Data Simpanan</u></h4>
 
                 <table class="table table-striped">
                     <thead>
@@ -29,6 +30,7 @@
                             <th scope="col">Nama Anggota</th>
                             <th scope="col">E-mail</th>
                             <th scope="col">Total Saldo</th>
+                            <th scope="col">Tanggal</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -40,6 +42,7 @@
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>Rp{{ number_format($user->totalSaldo(), 2) }}</td>
+                            <td>{{ $user->created_at->format('d-m-Y')}}</td>
                         </tr>
                         @empty
                         <tr>

@@ -4,14 +4,14 @@
 <head>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <title>Laporan Pinjaman</title>
+    <title>Laporan periode Pinjaman</title>
 </head>
 
 <body class="bg-white">
     <div class="content px-3">
         <div class="row">
             <div class="col-md-12">
-                <div class="text-center">
+                <div >
                     <img src="{{asset('asset/img/tamansiswa.png')}}" alt="" width="10%" height="10%">
                     <P>
                         <b>
@@ -21,14 +21,14 @@
                         </b>
                     </P>
                 </div>
-                @if (request('dari_tgl'))
-                <small>dari tanggal {{ request('dari_tgl') }} sampai tanggal {{ request('sampai_tgl') }}</small>
-                @endif
-
                 <u>
-                    <h4>Laporan Pinjaman</h4>
+                    <h4 class="text-center">Laporan Periode Pinjaman</h4>
                 </u>
-
+                @if (request('dari_tgl'))
+                    <div class="text-center mb-3">
+                        <small>dari tanggal {{ request('dari_tgl') }} sampai tanggal {{ request('sampai_tgl') }}</small>
+                    </div>
+                @endif
                 <table class="table table-striped">
                     <thead>
                         <tr>

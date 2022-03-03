@@ -78,7 +78,7 @@ Route::group(['prefix' =>'savings'],  function(){
 // cetak laporan
 
 Route::group(['prefix' =>'reports'],function(){
-    Route::get('report/savings', 'ReportController@savings')->name('reports.savings');
+    Route::get('reports/savings', 'Reports\ReportController@savings')->name('reports.savings');
     Route::get('reports/anggota', 'Report\AnggotaController@moon')->name('reports.anggota');
     Route::get('reports/all/anggota', 'Report\AnggotaController@all')->name('reports.all.anggota');
     Route::get('reports/moon/installments', 'Reports\InstallmentController@moonthly')->name('reports.moon.installments');

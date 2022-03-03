@@ -15,23 +15,30 @@
 
     {{-- role sekretaris|ketua --}}
     @role('bendahara|ketua')
+        <h4>Cari Laporan</h4>
         <form action="{{route('loans.cetak')}}" method="get">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="form-group">
                         <input type="date" name="dari_tgl" class="form-control" id="date">
                     </div>
                 </div>
                 <label for="" class="mt-2">S/D</label>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="form-group">
                         <input type="date" name="sampai_tgl" class="form-control" id="date">
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="">
                     <button type="submit" class="btn btn-outline-primary">Print report</button>
                 </div>
-
+                @role('ketua|bendahara')
+                <div class="col-md-3">
+                    <a href="{{route('loans.cetak')}}" class="btn btn-outline-secondary">
+                        Print all
+                    </a>
+                </div>
+                @endrole
             </div>
         </form>
     @endrole
@@ -41,16 +48,6 @@
         @include('loans._anggota')
     @else
         @include('loans._all')
-    @endrole
-    {{-- role sekretaris|bendahara --}}
-    @role('ketua|bendahara')
-        <div class="row">
-            <div class="col-md-4">
-                <a href="{{route('loans.cetak')}}">
-                        <button type="submit" class="btn btn-outline-secondary">Print all</button>
-                </a>
-            </div>
-        </div>
     @endrole
 </div>
 @endsection

@@ -61,7 +61,7 @@
             <th scope="col">Jenis Kelamin</th>
             <th scope="col">Jabatan</th>
             <th scope="col">Alamat</th>
-            <th scope="col">Created</th>
+            <th scope="col">Tanggal Bergabung</th>
             <th scope="col">Telepon</th>
             <th scope="col">Akses</th>
         </thead>

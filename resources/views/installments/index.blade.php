@@ -31,7 +31,7 @@
                             </div>
 
                         </div>
-                        <div class="ml-3 d-flex">
+                        <div class="d-flex">
                             <button class="btn btn-outline-info">Cari laporan</button>
                             <a href="{{route('reports.installments')}}" class="btn btn-outline-info ml-2">Cetak Semua Laporan</a>
                         </div>

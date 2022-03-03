@@ -4,7 +4,7 @@
 <head>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <title>Laporan Anggota</title>
+    <title>Laporan Periode</title>
 </head>
 
 <body class="bg-white">
@@ -22,24 +22,34 @@
                     </P>
                 </div>
                 @if (request('dari_tgl'))
-                <small>dari tanggal {{ request('tgl_awal') }} sampai tanggal {{ request('tgl_akhir') }}</small>
+                <div class="text-center">
+                    <small>dari tanggal {{ request('tgl_awal') }} sampai tanggal {{ request('tgl_akhir') }}</small>
+                </div>
+
                 @endif
-
-                <u>
-                    <h4>Laporan Anggota</h4>
-                </u>
-
+                <div class="text-center">
+                    <h4>Laporan Periode</h4>
+                    <u>
+                        <h4>Data Anggota</h4>
+                    </u>
+                </div>
+                @if (request('tgl_awal'))
+                <div class="text-center mb-3">
+                    <small>Dari tanggal {{ request('tgl_awal') }} &nbsp; sampai tanggal {{ request('tgl_akhir') }}</small>
+                </div>
+                @endif
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="col">NIP Anggota</th>
-                            <th scope="col">Nama Anggota</th>
-                            <th scope="col">Roles</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Gender</th>
-                            <th scope="col">Jabatan</th>
-                            <th scope="col">Address</th>
-                            <th scope="col">No.Telp</th>
+                            <th >NIP Anggota</th>
+                            <th >Nama Anggota</th>
+                            <th >Roles</th>
+                            <th >Email</th>
+                            <th >Gender</th>
+                            <th >Jabatan</th>
+                            <th >Address</th>
+                            <th >No.Telp</th>
+                            <th >Tanggal Bergabung</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -53,6 +63,7 @@
                                 <td>{{$user->jabatan}}</td>
                                 <td>{{$user->alamat}}</td>
                                 <td>{{$user->phone}}</td>
+                                <td>{{$user->created_at->format('d-m-Y')}}</td>
                             </tr>
                         @empty
                             <tr>
